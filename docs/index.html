@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hunter 350 Traction Strap</title>
+<meta name="description" content="A 3D-printable, zip-tie style anti-skid snow traction strap sized for the Royal Enfield Hunter 350.">
+<style>
+:root{--bg:#101216;--panel:#181b21;--line:#2a2f39;--text:#eceef2;--mute:#9aa3b2;--accent:#ff6a13}
+@media (prefers-color-scheme: light){:root{--bg:#f6f4f1;--panel:#fff;--line:#e3ded8;--text:#1c1f24;--mute:#5d6572}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header.hero{padding:56px 0 28px}
+.tag{color:var(--accent);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:13px}
+h1{font-size:clamp(32px,6vw,56px);line-height:1.08;margin:8px 0 14px}
+.lead{color:var(--mute);max-width:62ch;font-size:18px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.btn{background:var(--accent);color:#111;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600}
+.btn.alt{background:transparent;color:var(--text);border:1px solid var(--line)}
+section{padding:36px 0}
+h2{font-size:28px;margin:0 0 6px}
+.sub{color:var(--mute);margin:0 0 20px}
+video,.stage{width:100%;border-radius:12px;border:1px solid var(--line);background:#15171c;display:block}
+#viewer{height:min(70vh,560px);position:relative;overflow:hidden}
+#viewer canvas{width:100%;height:100%;display:block}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0}
+.bar button{background:var(--panel);color:var(--text);border:1px solid var(--line);padding:8px 14px;border-radius:8px;cursor:pointer;font:inherit}
+.bar button.on{border-color:var(--accent);color:var(--accent)}
+.bar label{color:var(--mute);margin-left:auto}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+figure img{width:100%;display:block;aspect-ratio:1/1;object-fit:cover}
+figcaption{padding:10px 14px;color:var(--mute);font-size:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+.card h3{margin:0 0 6px;font-size:17px}
+.card p{margin:0;color:var(--mute);font-size:15px}
+table{width:100%;border-collapse:collapse;background:var(--panel);border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:15px}
+th{color:var(--mute);font-weight:500;width:42%}
+tr:last-child th,tr:last-child td{border-bottom:0}
+.note{border-left:3px solid var(--accent);padding:6px 14px;color:var(--mute);margin-top:18px}
+footer{padding:36px 0 60px;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <div class="tag">3D-printable · snow &amp; mud traction</div>
+  <h1>Hunter 350<br>Zip-Tie Traction Strap</h1>
+  <p class="lead">A one-piece, zip-tie style anti-skid strap with stepped cleats, a one-way ratchet lock and a rounded tail. It threads through the wheel, locks around the tyre and rim, and bites into snow and ice. Sized for the Royal Enfield Hunter 350.</p>
+  <div class="cta"><a class="btn" href="#viewer-section">Spin it in 3D</a><a class="btn alt" href="#video">Watch the 360° video</a></div>
+</div></header>
+
+<section id="video"><div class="wrap">
+  <h2>360° motion video</h2>
+  <p class="sub">The strap in its installed loop pose, turning through a full rotation.</p>
+  <video controls loop muted autoplay playsinline poster="images/poster.jpg"><source src="video/hunter350-strap-360.mp4" type="video/mp4"></video>
+</div></section>
+
+<section id="viewer-section"><div class="wrap">
+  <h2>Interactive 3D model</h2>
+  <p class="sub">Drag to rotate, scroll or pinch to zoom. Rendered live from the real STL files.</p>
+  <div class="stage" id="viewer"></div>
+  <div class="bar">
+    <button data-model="loop" class="on">Installed loop (rear)</button>
+    <button data-model="straight">Straight, as printed (rear)</button>
+    <button data-model="front">Straight (front)</button>
+    <label><input type="checkbox" id="spin" checked> Auto-rotate</label>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>The reference product</h2>
+  <p class="sub">Photos from the orange anti-skid tyre traction cable-tie listing that this design is based on.</p>
+  <div class="grid">
+    <figure><img src="images/strap-fit.jpg" alt="Orange traction strap shown as a loop, with compatible wheel types" loading="lazy"><figcaption>The whole strap: head, cleat section and long toothed tail.</figcaption></figure>
+    <figure><img src="images/features.jpg" alt="Close-ups of tighten teeth, locking port and anti-slip bumps" loading="lazy"><figcaption>Tighten teeth, locking port, anti-slip bumps.</figcaption></figure>
+    <figure><img src="images/install.jpg" alt="Installation steps on a tyre" loading="lazy"><figcaption>Install: through the wheel hole, through the lock, pull tight and trim.</figcaption></figure>
+    <figure><img src="images/snow.jpg" alt="Gloved hands fitting the strap in snow" loading="lazy"><figcaption>Fitting it by hand, in gloves, in falling snow.</figcaption></figure>
+    <figure><img src="images/buckle.jpg" alt="Buckle design close-up" loading="lazy"><figcaption>Buckle design.</figcaption></figure>
+    <figure><img src="images/lugs.jpg" alt="Stepped cleats and oval recesses between them" loading="lazy"><figcaption>Stepped cleats with oval recesses between them.</figcaption></figure>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>What the design takes from it</h2>
+  <p class="sub">The model is an original design that works the same way, adapted for a motorcycle wheel.</p>
+  <div class="grid">
+    <div class="card"><h3>One-way ratchet head</h3><p>Open-top housing with a floor-rooted, two-tooth pawl. Load pushes the pawl into the teeth, so it locks tighter under tension. 45° lead-in, 90° lock shelf.</p></div>
+    <div class="card"><h3>Stepped cleats</h3><p>Full-width lugs with a lower and an upper step, filleted bases and rounded tops, so they resist shearing on the road.</p></div>
+    <div class="card"><h3>Oval flex dishes</h3><p>Shallow ovals between alternate cleats, as circled in the listing photos.</p></div>
+    <div class="card"><h3>Tyre-side micro-ribs</h3><p>V-grooves on the underside grip tread rubber without cutting it.</p></div>
+    <div class="card"><h3>Printed on edge</h3><p>Coiled upright on the bed so teeth, pawl and cleats lie in the layer plane, the strongest direction for FDM.</p></div>
+    <div class="card"><h3>Gradual ramps</h3><p>Smooth transitions from cleat band to strap, and a rounded tail, avoid stress concentrations.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Specs</h2>
+  <p class="sub">Rear and front presets for the Hunter 350, taken from the CAD script.</p>
+  <table>
+    <tr><th>Rear preset (140/70-17)</th><td>600 mm long, 7 cleats</td></tr>
+    <tr><th>Front preset (110/70-17)</th><td>520 mm long, 5 cleats</td></tr>
+    <tr><th>Tread band</th><td>22 mm wide, 4.0 mm thick</td></tr>
+    <tr><th>Cleats</th><td>Stepped, about 6.5 mm above the band</td></tr>
+    <tr><th>Ratchet teeth</th><td>2.0 mm pitch, 1.2 mm tall, 45° ramp, 90° stop face</td></tr>
+    <tr><th>Head</th><td>15 mm tall, two-tooth pawl, 0.5 mm clearances</td></tr>
+    <tr><th>Best material</th><td>Nylon (PA12 or PA6), or SLS/MJF PA12. Avoid PLA and PETG in the cold.</td></tr>
+    <tr><th>Files</th><td><a href="models/hunter350_rear_straight.stl">Rear STL</a> · <a href="models/hunter350_front_straight.stl">Front STL</a> · <a href="models/hunter350_rear_loop.stl">Rear loop pose STL</a></td></tr>
+  </table>
+  <p class="note">The strap has not been printed or load-tested. The loop pose is for display only, so the tail is not shown threaded through the head. Use it as an emergency traction aid at low speed (30–40 km/h or less), keep it clear of the brake caliper and chain, and carry spares.</p>
+</div></section>
+
+<footer><div class="wrap">Reference photos belong to the original listing's seller and are shown for comparison only. The 3D model is an original design.</div></footer>
+
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module" src="viewer.js"></script>
+</body>
+</html>
