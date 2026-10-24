@@ -1,0 +1,12 @@
+# Claude working notes and local settings: never commit
+claude-notes/
+.claude/settings.local.json
+
+# FreeCAD backup files
+*.FCBak
+*.FCStd1
+
+# Third-party reference screenshots (Amazon listing) and huge print-coil meshes
+*.jpg
+*_coil.stl
+__pycache__/
