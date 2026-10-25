@@ -2,8 +2,6 @@
 
 A 3D-printable, zip-tie style anti-skid strap for motorcycle tyres. It threads through the wheel, wraps tyre and rim, and locks with a wedging two-tooth pawl. The model is fully parametric and built in **FreeCAD 1.1** (OpenCascade), so you can export real **STEP** solids as well as STL.
 
-> **Status: untested design.** Nothing here has been printed or load-tested. Print the lock-test coupon first, and don't rely on this as your only grip on ice or snow.
-
 ![Rear strap, side and top view](docs/images/rear_views.png)
 
 ## Features
