@@ -41,6 +41,18 @@ th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font
 th{color:var(--mute);font-weight:500;width:42%}
 tr:last-child th,tr:last-child td{border-bottom:0}
 .note{border-left:3px solid var(--accent);padding:6px 14px;color:var(--mute);margin-top:18px}
+.grid2{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(460px,1fr))}@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+img.fit{aspect-ratio:auto;object-fit:contain;background:#fff}
+figure.wide{margin:18px 0}figure.wide img{aspect-ratio:auto;object-fit:contain;background:#fff}
+.tw{overflow-x:auto;border-radius:12px}
+table.data th{width:auto;color:var(--text);font-weight:600;white-space:normal}
+table.data td{white-space:nowrap}
+#filament table.data td{white-space:normal}
+tr.hl td{background:rgba(255,106,19,.10)}
+tr.no td{color:var(--mute)}
+td.warn{color:#e5484d;font-weight:700}
+.pts{color:var(--mute);padding-left:20px}.pts li{margin:6px 0}.pts strong{color:var(--text)}
+.fine{color:var(--mute);font-size:14px;margin-top:14px}
 footer{padding:36px 0 60px;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
 </style>
 </head>
@@ -97,6 +109,66 @@ footer{padding:36px 0 60px;color:var(--mute);font-size:14px;border-top:1px solid
 </div></section>
 
 <section><div class="wrap">
+  <h2>How the lock works</h2>
+  <p class="sub">A cut through the head at mid-width, and where the strap sits on each Hunter 350 tyre.</p>
+  <div class="grid2">
+    <figure><img class="fit" src="images/lock_section.png" alt="Cross-section of the head with the strap inserted" loading="lazy"><figcaption>Lock section: 90° shelves carry the load, 45° ramps let the teeth click past, and the strap core props the pawl after 0.45 mm.</figcaption></figure>
+    <figure><img class="fit" src="images/fit_diagram.png" alt="Strap path around each Hunter 350 tyre and rim" loading="lazy"><figcaption>Fit on the Metro and Retro tyres: cleats on the crown, head on the rim side away from the chain or disc.</figcaption></figure>
+    <figure><img class="fit" src="images/preview_metro_rear.png" alt="Rendered views of the Metro rear strap" loading="lazy"><figcaption>Metro rear (140/70-17): head, stepped cleats, tyre-side ribs, teeth and the print coil.</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="loads"><div class="wrap">
+  <h2>Pressure on each tooth</h2>
+  <p class="sub">The lock has two pawl teeth that share the pull. Each overlaps the pawl by 0.75 mm over a 14.5 mm width (10.9 mm² bearing face).</p>
+  <div class="tw"><table class="data">
+    <thead><tr><th>Loop tension</th><th>Per tooth</th><th>Bearing pressure</th><th>Root shear</th><th>Fillet peak (FEM, scaled)</th><th>Strap core tension</th></tr></thead>
+    <tbody><tr><td>100 N</td><td>50 N</td><td>4.6 MPa</td><td>2.0 MPa</td><td>13 MPa</td><td>2.8 MPa</td></tr><tr><td>200 N</td><td>100 N</td><td>9.2 MPa</td><td>4.1 MPa</td><td>26 MPa</td><td>5.6 MPa</td></tr><tr class="hl"><td>300 N (rating)</td><td>150 N</td><td>13.8 MPa</td><td>6.1 MPa</td><td>39 MPa</td><td>8.3 MPa</td></tr></tbody>
+  </table></div>
+  <p class="fine">PA12 tensile strength is about 45 MPa, so the tooth-root fillet at 39 MPa sets the rating of about 300 N per strap. If one tooth takes the whole load, bearing pressure doubles to 27.6 MPa and the local fillet peak reaches about 87 MPa, so that tooth yields and passes the load to the other. Bearing and shear are force ÷ area; the fillet peak is the CalculiX result at 300 N, scaled with load.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Torque handling by Royal Enfield model</h2>
+  <p class="sub">Engine torque does not set the load on snow, because the tyre slips first. The traction limit does: force = μ × rear wheel load, with μ = 0.35 for packed snow and 0.15 for ice, the rear wheel carrying 55 % of bike plus a 75 kg rider.</p>
+  <div class="tw"><table class="data">
+    <thead><tr><th>Model</th><th>cc</th><th>Engine torque</th><th>Kerb weight</th><th>Rear tyre</th><th>Wheel torque at snow limit</th><th>Loop tension, 1 strap carries all</th><th>Loop tension, 2 straps share</th><th>Wheel torque at ice limit</th><th>Wheel torque a 300 N lock holds (1 / 2 straps)</th></tr></thead>
+    <tbody><tr><td>Hunter 350 Retro</td><td>349</td><td>27 Nm</td><td>177 kg</td><td>120/80-17</td><td>144 Nm</td><td>264 N</td><td>132 N</td><td>62 Nm</td><td>163 / 327 Nm</td></tr><tr class="hl"><td>Hunter 350 Metro</td><td>349</td><td>27 Nm</td><td>181 kg</td><td>140/70-17</td><td>147 Nm</td><td>269 N</td><td>134 N</td><td>63 Nm</td><td>164 / 329 Nm</td></tr><tr><td>Meteor 350</td><td>349</td><td>27 Nm</td><td>191 kg</td><td>140/70-17</td><td>153 Nm</td><td>279 N</td><td>140 N</td><td>66 Nm</td><td>164 / 329 Nm</td></tr><tr><td>Classic 350</td><td>349</td><td>27 Nm</td><td>195 kg</td><td>120/80-18</td><td>161 Nm</td><td>283 N</td><td>142 N</td><td>69 Nm</td><td>170 / 340 Nm</td></tr><tr><td>Himalayan 450</td><td>452</td><td>40 Nm</td><td>196 kg</td><td>140/80-17</td><td>163 Nm</td><td>284 N</td><td>142 N</td><td>70 Nm</td><td>172 / 344 Nm</td></tr><tr><td>Continental GT 650</td><td>648</td><td>52.3 Nm</td><td>202 kg</td><td>130/70-18</td><td>162 Nm</td><td>291 N</td><td>145 N</td><td>69 Nm</td><td>167 / 335 Nm</td></tr><tr><td>Interceptor 650</td><td>648</td><td>52 Nm</td><td>213 kg</td><td>130/70-18</td><td>169 Nm</td><td class="warn">302 N</td><td>151 N</td><td>72 Nm</td><td>167 / 335 Nm</td></tr><tr><td>Super Meteor 650</td><td>648</td><td>52.3 Nm</td><td>241 kg</td><td>150/80-16</td><td>187 Nm</td><td class="warn">332 N</td><td>166 N</td><td>80 Nm</td><td>169 / 339 Nm</td></tr></tbody>
+  </table></div>
+  <figure class="wide"><img src="images/loads_by_model.png" alt="Loop tension each strap needs by model, against the 300 N PA12 rating" loading="lazy"><figcaption>Loop tension a strap needs so it does not slip at the snow traction limit, against the 300 N rating.</figcaption></figure>
+  <ul class="pts">
+    <li>On snow every model needs about the same wheel torque, 145–190 Nm. A 650 does not load the strap much harder than a 350, because the extra engine torque just spins the wheel.</li>
+    <li>With one strap carrying the whole pull, the Interceptor 650 and Super Meteor 650 reach or pass the 300 N rating (shown in red). The 350s and the Himalayan use 88–95 %.</li>
+    <li>With two straps in the contact patch, every model stays at or below about 55 % of the rating. That is why you fit 5–6 straps per wheel.</li>
+    <li>Braking loads the front straps the same way, up to μ × front wheel load.</li>
+  </ul>
+  <p class="fine">Presets exist for the Hunter 350 Metro and Retro. The other models show the load only; add their tyre to the CAD script to build a strap for them. The friction values, wrap angle (4.5 rad) and weight split are assumptions, so treat the figures as rough, not as safe limits. They are static loads; bumps and hard braking add short peaks.</p>
+</div></section>
+
+<section id="filament"><div class="wrap">
+  <h2>Best filament for strong traction, cold or warm</h2>
+  <p class="sub">For long rides from a freezing winter morning to a hot summer road, use <strong>unfilled PA12 nylon</strong>.</p>
+  <div class="tw"><table class="data">
+    <thead><tr><th>Rank</th><th>Material</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td>1</td><td><strong>PA12 nylon filament</strong>, dried, printed on edge</td><td>Stays tough in the cold. Takes up very little moisture, so strength and stiffness stay close to constant from damp winter to dry summer. Keeps its shape at road-warm temperatures. The strength figures above are for this material.</td></tr>
+      <tr class="hl"><td>1</td><td><strong>SLS / MJF PA12</strong> from a print service</td><td>The same material with no layer lines or warping. The most consistent result, best if you want several straps that behave alike.</td></tr>
+      <tr><td>2</td><td>PA6/66 copolymer nylon</td><td>Easy to print and tough, but absorbs more moisture, so it is softer and weaker when damp.</td></tr>
+      <tr><td>3</td><td>PA6 nylon</td><td>Highest strength when bone-dry, but swings the most with humidity. In published tests, conditioned PA6 kept only 56 % of its dry strength, against about 15 % lost for PA12.</td></tr>
+      <tr class="no"><td>Avoid</td><td>Carbon- or glass-filled nylon</td><td>Stiffer, but stretches very little before cracking. The pawl bends 2.7 % every time a tooth clicks past, and the teeth have small root fillets.</td></tr>
+      <tr class="no"><td>Avoid</td><td>PLA, PETG, ABS, PC</td><td>PLA and PETG crack in the cold, and PLA softens in a hot car or garage. ABS and PC are brittle at notches.</td></tr>
+      <tr class="no"><td>Avoid</td><td>TPU</td><td>Too soft to hold the lock.</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="pts">
+    <li><strong>Choosing a brand:</strong> pick an unfilled PA12 whose datasheet shows elongation at break of 20 % or more, or a notched impact figure.</li>
+    <li><strong>Before printing:</strong> dry it 8–12 h at 70–80 °C and print straight from a dry box. Leave the printed strap in room air for a day or two before fitting.</li>
+    <li><strong>On long rides:</strong> nylon creeps slowly under steady load, faster when hot. Re-tighten after the first kilometre and every 5–10 km, more often in warm weather.</li>
+    <li>The filament does not set the traction. Grip comes from the cleats biting into snow; nylon itself is slippery on ice.</li>
+  </ul>
+</div></section>
+
+<section><div class="wrap">
   <h2>Specs</h2>
   <p class="sub">One preset per Hunter 350 tyre, taken from the CAD script. Each is sized so the cleats sit on the crown and the lock lands on the teeth even if your loop is 10 % off.</p>
   <table>
@@ -110,7 +182,7 @@ footer{padding:36px 0 60px;color:var(--mute);font-size:14px;border-top:1px solid
     <tr><th>Head</th><td>19.7 mm tall, 3.6 mm floor, two-tooth wedge pawl propped by the strap under load, 0.5 mm clearances</td></tr>
     <tr><th>Printing</th><td>On edge as an upright coil, about 178 × 166 mm, 25.5 mm tall</td></tr>
     <tr><th>Rated strap tension</th><td>About 300 N in PA12, from a CalculiX FEM check (not a load test)</td></tr>
-    <tr><th>Best material</th><td>Unfilled PA12, or SLS/MJF PA12: tough in the cold and stable when warm. Avoid PLA, PETG, TPU and carbon- or glass-filled grades.</td></tr>
+    <tr><th>Best material</th><td>Unfilled PA12 nylon, dried (FDM), or SLS/MJF PA12. See the filament section above.</td></tr>
     <tr><th>Files</th><td><a href="models/hunter350_rear_straight.stl">Metro rear STL</a> · <a href="models/hunter350_front_straight.stl">Metro front STL</a> · <a href="models/hunter350_rear_loop.stl">Metro rear installed pose</a></td></tr>
     <tr><th>Loads by model</th><td><a href="https://github.com/Manish-404/zip-ties-3d-bike#pressure-and-torque-by-royal-enfield-model">Tooth pressure and wheel torque for the 350, 450 and 650 Royal Enfields</a></td></tr>
     <tr><th>Guide</th><td><a href="https://github.com/Manish-404/zip-ties-3d-bike/blob/main/FITTING.md">Printing, fitting and riding guide</a></td></tr>

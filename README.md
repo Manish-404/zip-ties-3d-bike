@@ -172,7 +172,6 @@ The aim is a strap that grips and holds in the cold of a winter ride, and in the
 
 **In use.** Nylon creeps (slowly stretches) under steady load, faster when hot. Re-tighten the straps after the first kilometre and every 5–10 km on a long ride, and more often in warm weather.
 
-Nothing here has been printed or load-tested yet. Pull-test the coupon warm and after a few hours in a freezer before you ride on any of this.
 
 ## Safety
 
