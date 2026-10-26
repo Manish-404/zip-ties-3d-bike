@@ -1,0 +1,680 @@
+{
+  "METRO_FRONT": {
+    "preset": "METRO_FRONT",
+    "files": {
+      "step": "hunter350_metro_front.step",
+      "stl_straight": "hunter350_metro_front_straight.stl",
+      "stl_print": "hunter350_metro_front_PRINT_on_edge_coil.stl"
+    },
+    "brep": {
+      "valid": true,
+      "solids": 1,
+      "shells": 1,
+      "faces": 724
+    },
+    "volume_cm3": 31.79,
+    "mass_g": {
+      "PA12": 32.1,
+      "PA6": 36.2,
+      "PA12_SLS": 30.2
+    },
+    "bbox_straight": [
+      -14.6,
+      510.4,
+      -11.0,
+      14.5,
+      -0.0,
+      19.7
+    ],
+    "length_total": 525.0,
+    "head": {
+      "length": 14.6,
+      "height": 19.7,
+      "width": 25.5,
+      "slot_s": [
+        -7.1,
+        -3.0
+      ],
+      "slot_y": [
+        -6.0,
+        10.0
+      ],
+      "pawl_tip_s": -5.85,
+      "pawl_top_z": 18.2,
+      "engagement_at_rest": 0.75,
+      "pawl_tip_to_core": 0.45,
+      "side_clearance": 0.5,
+      "entry_clearance": 0.5
+    },
+    "sections": {
+      "root": [
+        0,
+        17.0
+      ],
+      "neck": [
+        17.0,
+        74.2
+      ],
+      "band": [
+        82.2,
+        178.2
+      ],
+      "flange": [
+        178.2,
+        192.2
+      ],
+      "teeth": [
+        278.6,
+        473.6
+      ],
+      "tip": [
+        475.4,
+        510.4
+      ]
+    },
+    "teeth": 78,
+    "lugs": 4,
+    "lug_height_above_tyre": 9.0,
+    "mesh_straight": {
+      "triangles": 28782,
+      "directed_edge_dupes": 0,
+      "unmatched_edges": 0,
+      "closed": true,
+      "volume_cm3": 31.79
+    },
+    "mesh_print": {
+      "triangles": 28782,
+      "volume_cm3": 32.0,
+      "footprint_mm": [
+        177.7,
+        164.6
+      ],
+      "height_mm": 25.5,
+      "coiled": true,
+      "turns": 1.01,
+      "radius_neutral": [
+        80.0,
+        74.4
+      ],
+      "min_gap_between_turns_mm": 3.76
+    },
+    "fit": {
+      "tyre": "110/70-17 front, Metro (Dapper, Rebel), cast MT3.00 rim",
+      "estimated_loop_mm": 359,
+      "head_at": "rim outer lower corner, non-disc side",
+      "head_axial_reach_beyond_rim_face_mm": 19.7,
+      "lug_zone_centre_offset_from_crown_mm": 0.0,
+      "lug_zone_half_span_mm": 48.0,
+      "far_rim_corner_at_s": 264,
+      "teeth_s": [
+        279,
+        471
+      ],
+      "lock_at_s": 373,
+      "lock_if_loop_10pct_short": 336,
+      "lock_if_loop_10pct_long": 410,
+      "all_inside_teeth": true,
+      "tail_after_lock_mm": 137,
+      "section_mm": {
+        "C": 200.86,
+        "w": 33.0,
+        "X": 92.39,
+        "loop": 359.26,
+        "width": 110,
+        "Hs": 77.0,
+        "lip_x": 45.1,
+        "lip_z": 14.0,
+        "zc": 38.5,
+        "dip": 10.0,
+        "spoke": false
+      },
+      "stations_s": {
+        "corner": -3.25,
+        "band": [
+          82.2,
+          178.2
+        ],
+        "far_corner": 263.6,
+        "lock": 373.0,
+        "tip": 510.4,
+        "head": [
+          -14.6,
+          0.0
+        ]
+      }
+    }
+  },
+  "METRO_REAR": {
+    "preset": "METRO_REAR",
+    "files": {
+      "step": "hunter350_metro_rear.step",
+      "stl_straight": "hunter350_metro_rear_straight.stl",
+      "stl_print": "hunter350_metro_rear_PRINT_on_edge_coil.stl"
+    },
+    "brep": {
+      "valid": true,
+      "solids": 1,
+      "shells": 1,
+      "faces": 823
+    },
+    "volume_cm3": 36.88,
+    "mass_g": {
+      "PA12": 37.3,
+      "PA6": 42.0,
+      "PA12_SLS": 35.0
+    },
+    "bbox_straight": [
+      -14.6,
+      600.4,
+      -11.0,
+      14.5,
+      -0.0,
+      19.7
+    ],
+    "length_total": 615.0,
+    "head": {
+      "length": 14.6,
+      "height": 19.7,
+      "width": 25.5,
+      "slot_s": [
+        -7.1,
+        -3.0
+      ],
+      "slot_y": [
+        -6.0,
+        10.0
+      ],
+      "pawl_tip_s": -5.85,
+      "pawl_top_z": 18.2,
+      "engagement_at_rest": 0.75,
+      "pawl_tip_to_core": 0.45,
+      "side_clearance": 0.5,
+      "entry_clearance": 0.5
+    },
+    "sections": {
+      "root": [
+        0,
+        17.0
+      ],
+      "neck": [
+        17.0,
+        95.6
+      ],
+      "band": [
+        103.6,
+        223.6
+      ],
+      "flange": [
+        223.6,
+        237.6
+      ],
+      "teeth": [
+        345.4,
+        562.9
+      ],
+      "tip": [
+        565.4,
+        600.4
+      ]
+    },
+    "teeth": 87,
+    "lugs": 5,
+    "lug_height_above_tyre": 10.5,
+    "mesh_straight": {
+      "triangles": 35282,
+      "directed_edge_dupes": 0,
+      "unmatched_edges": 0,
+      "closed": true,
+      "volume_cm3": 36.89
+    },
+    "mesh_print": {
+      "triangles": 35282,
+      "volume_cm3": 37.2,
+      "footprint_mm": [
+        177.3,
+        165.9
+      ],
+      "height_mm": 25.5,
+      "coiled": true,
+      "turns": 1.2,
+      "radius_neutral": [
+        80.0,
+        73.3
+      ],
+      "min_gap_between_turns_mm": 2.0
+    },
+    "fit": {
+      "tyre": "140/70-17 rear, Metro, cast rim (~MT3.50)",
+      "estimated_loop_mm": 438,
+      "head_at": "rim outer lower corner, non-chain side",
+      "head_axial_reach_beyond_rim_face_mm": 19.7,
+      "lug_zone_centre_offset_from_crown_mm": 0.0,
+      "lug_zone_half_span_mm": 60.0,
+      "far_rim_corner_at_s": 330,
+      "teeth_s": [
+        345,
+        560
+      ],
+      "lock_at_s": 452,
+      "lock_if_loop_10pct_short": 407,
+      "lock_if_loop_10pct_long": 497,
+      "all_inside_teeth": true,
+      "tail_after_lock_mm": 148,
+      "section_mm": {
+        "C": 267.61,
+        "w": 33.0,
+        "X": 104.83,
+        "loop": 438.43,
+        "width": 140,
+        "Hs": 98.0,
+        "lip_x": 51.45,
+        "lip_z": 14.0,
+        "zc": 49.0,
+        "dip": 10.0,
+        "spoke": false
+      },
+      "stations_s": {
+        "corner": -3.25,
+        "band": [
+          103.6,
+          223.6
+        ],
+        "far_corner": 330.4,
+        "lock": 452.1,
+        "tip": 600.4,
+        "head": [
+          -14.6,
+          0.0
+        ]
+      }
+    }
+  },
+  "RETRO_FRONT": {
+    "preset": "RETRO_FRONT",
+    "files": {
+      "step": "hunter350_retro_front.step",
+      "stl_straight": "hunter350_retro_front_straight.stl",
+      "stl_print": "hunter350_retro_front_PRINT_on_edge_coil.stl"
+    },
+    "brep": {
+      "valid": true,
+      "solids": 1,
+      "shells": 1,
+      "faces": 664
+    },
+    "volume_cm3": 30.31,
+    "mass_g": {
+      "PA12": 30.6,
+      "PA6": 34.6,
+      "PA12_SLS": 28.8
+    },
+    "bbox_straight": [
+      -14.6,
+      475.4,
+      -11.0,
+      14.5,
+      -0.0,
+      19.7
+    ],
+    "length_total": 490.0,
+    "head": {
+      "length": 14.6,
+      "height": 19.7,
+      "width": 25.5,
+      "slot_s": [
+        -7.1,
+        -3.0
+      ],
+      "slot_y": [
+        -6.0,
+        10.0
+      ],
+      "pawl_tip_s": -5.85,
+      "pawl_top_z": 18.2,
+      "engagement_at_rest": 0.75,
+      "pawl_tip_to_core": 0.45,
+      "side_clearance": 0.5,
+      "entry_clearance": 0.5
+    },
+    "sections": {
+      "root": [
+        0,
+        17.0
+      ],
+      "neck": [
+        17.0,
+        69.8
+      ],
+      "band": [
+        77.8,
+        173.8
+      ],
+      "flange": [
+        173.8,
+        187.8
+      ],
+      "teeth": [
+        269.8,
+        439.8
+      ],
+      "tip": [
+        440.4,
+        475.4
+      ]
+    },
+    "teeth": 68,
+    "lugs": 4,
+    "lug_height_above_tyre": 9.0,
+    "mesh_straight": {
+      "triangles": 27468,
+      "directed_edge_dupes": 0,
+      "unmatched_edges": 0,
+      "closed": true,
+      "volume_cm3": 30.32
+    },
+    "mesh_print": {
+      "triangles": 27468,
+      "volume_cm3": 30.52,
+      "footprint_mm": [
+        178.5,
+        164.2
+      ],
+      "height_mm": 25.5,
+      "coiled": true,
+      "turns": 0.93,
+      "radius_neutral": [
+        80.0,
+        74.8
+      ],
+      "min_gap_between_turns_mm": 10.72
+    },
+    "fit": {
+      "tyre": "100/80-17 front, Retro / Factory (spoke) and Base Premium (alloy)",
+      "estimated_loop_mm": 325,
+      "head_at": "rim outer lower corner, non-disc side",
+      "head_axial_reach_beyond_rim_face_mm": 19.7,
+      "lug_zone_centre_offset_from_crown_mm": 0.0,
+      "lug_zone_half_span_mm": 48.0,
+      "far_rim_corner_at_s": 255,
+      "teeth_s": [
+        270,
+        437
+      ],
+      "lock_at_s": 338,
+      "lock_if_loop_10pct_short": 304,
+      "lock_if_loop_10pct_long": 372,
+      "all_inside_teeth": true,
+      "tail_after_lock_mm": 137,
+      "section_mm": {
+        "C": 208.05,
+        "w": 25.0,
+        "X": 66.56,
+        "loop": 324.62,
+        "width": 100,
+        "Hs": 80.0,
+        "lip_x": 32.3,
+        "lip_z": 12.0,
+        "zc": 40.0,
+        "dip": 8.0,
+        "spoke": true
+      },
+      "stations_s": {
+        "corner": -3.25,
+        "band": [
+          77.8,
+          173.8
+        ],
+        "far_corner": 254.8,
+        "lock": 338.3,
+        "tip": 475.4,
+        "head": [
+          -14.6,
+          0.0
+        ]
+      }
+    }
+  },
+  "RETRO_REAR": {
+    "preset": "RETRO_REAR",
+    "files": {
+      "step": "hunter350_retro_rear.step",
+      "stl_straight": "hunter350_retro_rear_straight.stl",
+      "stl_print": "hunter350_retro_rear_PRINT_on_edge_coil.stl"
+    },
+    "brep": {
+      "valid": true,
+      "solids": 1,
+      "shells": 1,
+      "faces": 739
+    },
+    "volume_cm3": 34.22,
+    "mass_g": {
+      "PA12": 34.6,
+      "PA6": 39.0,
+      "PA12_SLS": 32.5
+    },
+    "bbox_straight": [
+      -14.6,
+      535.4,
+      -11.0,
+      14.5,
+      -0.0,
+      19.7
+    ],
+    "length_total": 550.0,
+    "head": {
+      "length": 14.6,
+      "height": 19.7,
+      "width": 25.5,
+      "slot_s": [
+        -7.1,
+        -3.0
+      ],
+      "slot_y": [
+        -6.0,
+        10.0
+      ],
+      "pawl_tip_s": -5.85,
+      "pawl_top_z": 18.2,
+      "engagement_at_rest": 0.75,
+      "pawl_tip_to_core": 0.45,
+      "side_clearance": 0.5,
+      "entry_clearance": 0.5
+    },
+    "sections": {
+      "root": [
+        0,
+        17.0
+      ],
+      "neck": [
+        17.0,
+        81.7
+      ],
+      "band": [
+        89.7,
+        209.7
+      ],
+      "flange": [
+        209.7,
+        223.7
+      ],
+      "teeth": [
+        317.6,
+        500.1
+      ],
+      "tip": [
+        500.4,
+        535.4
+      ]
+    },
+    "teeth": 73,
+    "lugs": 5,
+    "lug_height_above_tyre": 10.5,
+    "mesh_straight": {
+      "triangles": 33528,
+      "directed_edge_dupes": 0,
+      "unmatched_edges": 0,
+      "closed": true,
+      "volume_cm3": 34.22
+    },
+    "mesh_print": {
+      "triangles": 33528,
+      "volume_cm3": 34.52,
+      "footprint_mm": [
+        177.3,
+        166.0
+      ],
+      "height_mm": 25.5,
+      "coiled": true,
+      "turns": 1.06,
+      "radius_neutral": [
+        80.0,
+        74.1
+      ],
+      "min_gap_between_turns_mm": 2.81
+    },
+    "fit": {
+      "tyre": "120/80-17 rear, Retro / Factory (spoke) and Base Premium (alloy)",
+      "estimated_loop_mm": 381,
+      "head_at": "rim outer lower corner, non-chain side",
+      "head_axial_reach_beyond_rim_face_mm": 19.7,
+      "lug_zone_centre_offset_from_crown_mm": 0.0,
+      "lug_zone_half_span_mm": 60.0,
+      "far_rim_corner_at_s": 303,
+      "teeth_s": [
+        318,
+        498
+      ],
+      "lock_at_s": 395,
+      "lock_if_loop_10pct_short": 355,
+      "lock_if_loop_10pct_long": 434,
+      "all_inside_teeth": true,
+      "tail_after_lock_mm": 141,
+      "section_mm": {
+        "C": 255.88,
+        "w": 25.0,
+        "X": 75.22,
+        "loop": 381.1,
+        "width": 120,
+        "Hs": 96.0,
+        "lip_x": 36.75,
+        "lip_z": 12.0,
+        "zc": 48.0,
+        "dip": 8.0,
+        "spoke": true
+      },
+      "stations_s": {
+        "corner": -3.25,
+        "band": [
+          89.7,
+          209.7
+        ],
+        "far_corner": 302.6,
+        "lock": 394.8,
+        "tip": 535.4,
+        "head": [
+          -14.6,
+          0.0
+        ]
+      }
+    }
+  },
+  "COUPON": {
+    "preset": "COUPON",
+    "files": {
+      "step": "hunter350_coupon.step",
+      "stl_straight": "hunter350_coupon_straight.stl",
+      "stl_print": "hunter350_coupon_PRINT_on_edge.stl"
+    },
+    "brep": {
+      "valid": true,
+      "solids": 1,
+      "shells": 1,
+      "faces": 370
+    },
+    "volume_cm3": 18.05,
+    "mass_g": {
+      "PA12": 18.2,
+      "PA6": 20.6,
+      "PA12_SLS": 17.1
+    },
+    "bbox_straight": [
+      -14.6,
+      215.4,
+      -11.0,
+      14.5,
+      -0.0,
+      19.7
+    ],
+    "length_total": 230.0,
+    "head": {
+      "length": 14.6,
+      "height": 19.7,
+      "width": 25.5,
+      "slot_s": [
+        -7.1,
+        -3.0
+      ],
+      "slot_y": [
+        -6.0,
+        10.0
+      ],
+      "pawl_tip_s": -5.85,
+      "pawl_top_z": 18.2,
+      "engagement_at_rest": 0.75,
+      "pawl_tip_to_core": 0.45,
+      "side_clearance": 0.5,
+      "entry_clearance": 0.5
+    },
+    "sections": {
+      "root": [
+        0,
+        17.0
+      ],
+      "neck": [
+        17.0,
+        22.0
+      ],
+      "band": [
+        30.0,
+        78.0
+      ],
+      "flange": [
+        78.0,
+        92.0
+      ],
+      "teeth": [
+        93.5,
+        178.5
+      ],
+      "tip": [
+        180.4,
+        215.4
+      ]
+    },
+    "teeth": 34,
+    "lugs": 2,
+    "lug_height_above_tyre": 10.5,
+    "mesh_straight": {
+      "triangles": 12482,
+      "directed_edge_dupes": 0,
+      "unmatched_edges": 0,
+      "closed": true,
+      "volume_cm3": 18.05
+    },
+    "mesh_print": {
+      "triangles": 12482,
+      "volume_cm3": 18.05,
+      "footprint_mm": [
+        230.0,
+        19.7
+      ],
+      "height_mm": 25.5,
+      "coiled": false,
+      "turns": 0.0,
+      "radius_neutral": null,
+      "min_gap_between_turns_mm": null
+    },
+    "fit": null
+  }
+}

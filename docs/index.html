@@ -63,9 +63,9 @@ footer{padding:36px 0 60px;color:var(--mute);font-size:14px;border-top:1px solid
   <p class="sub">Drag to rotate, scroll or pinch to zoom. Rendered live from the real STL files.</p>
   <div class="stage" id="viewer"></div>
   <div class="bar">
-    <button data-model="loop" class="on">Installed loop (rear)</button>
-    <button data-model="straight">Straight, as printed (rear)</button>
-    <button data-model="front">Straight (front)</button>
+    <button data-model="loop" class="on">Installed (Metro rear)</button>
+    <button data-model="straight">Straight (Metro rear)</button>
+    <button data-model="front">Straight (Metro front)</button>
     <label><input type="checkbox" id="spin" checked> Auto-rotate</label>
   </div>
 </div></section>
@@ -89,7 +89,7 @@ footer{padding:36px 0 60px;color:var(--mute);font-size:14px;border-top:1px solid
   <div class="grid">
     <div class="card"><h3>One-way ratchet head</h3><p>Open-top housing with a floor-rooted, two-tooth pawl. Load pushes the pawl into the teeth, so it locks tighter under tension. 45° lead-in, 90° lock shelf.</p></div>
     <div class="card"><h3>Stepped cleats</h3><p>Full-width lugs with a lower and an upper step, filleted bases and rounded tops, so they resist shearing on the road.</p></div>
-    <div class="card"><h3>Oval flex dishes</h3><p>Shallow ovals between alternate cleats.</p></div>
+    <div class="card"><h3>Oval flex dishes</h3><p>Shallow ovals between the cleats, on a thin 2.5 mm band that flexes around the tyre.</p></div>
     <div class="card"><h3>Tyre-side micro-ribs</h3><p>V-grooves on the underside grip tread rubber without cutting it.</p></div>
     <div class="card"><h3>Printed on edge</h3><p>Coiled upright on the bed so teeth, pawl and cleats lie in the layer plane, the strongest direction for FDM.</p></div>
     <div class="card"><h3>Gradual ramps</h3><p>Smooth transitions from cleat band to strap, and a rounded tail, avoid stress concentrations.</p></div>
@@ -98,16 +98,22 @@ footer{padding:36px 0 60px;color:var(--mute);font-size:14px;border-top:1px solid
 
 <section><div class="wrap">
   <h2>Specs</h2>
-  <p class="sub">Rear and front presets for the Hunter 350, taken from the CAD script.</p>
+  <p class="sub">One preset per Hunter 350 tyre, taken from the CAD script. Each is sized so the cleats sit on the crown and the lock lands on the teeth even if your loop is 10 % off.</p>
   <table>
-    <tr><th>Rear preset (140/70-17)</th><td>600 mm long, 7 cleats</td></tr>
-    <tr><th>Front preset (110/70-17)</th><td>520 mm long, 5 cleats</td></tr>
-    <tr><th>Tread band</th><td>22 mm wide, 4.0 mm thick</td></tr>
-    <tr><th>Cleats</th><td>Stepped, about 6.5 mm above the band</td></tr>
-    <tr><th>Ratchet teeth</th><td>2.0 mm pitch, 1.2 mm tall, 45° ramp, 90° stop face</td></tr>
-    <tr><th>Head</th><td>15 mm tall, two-tooth pawl, 0.5 mm clearances</td></tr>
-    <tr><th>Best material</th><td>Nylon (PA12 or PA6), or SLS/MJF PA12. Avoid PLA and PETG in the cold.</td></tr>
-    <tr><th>Files</th><td><a href="models/hunter350_rear_straight.stl">Rear STL</a> · <a href="models/hunter350_front_straight.stl">Front STL</a> · <a href="models/hunter350_rear_loop.stl">Rear loop pose STL</a></td></tr>
+    <tr><th>Metro rear (140/70-17)</th><td>615 mm long, 5 cleats</td></tr>
+    <tr><th>Metro front (110/70-17)</th><td>525 mm long, 4 lower cleats</td></tr>
+    <tr><th>Retro / Factory, Base Premium rear (120/80-17)</th><td>550 mm long, 5 cleats</td></tr>
+    <tr><th>Retro / Factory, Base Premium front (100/80-17)</th><td>490 mm long, 4 lower cleats</td></tr>
+    <tr><th>Tread band</th><td>22 mm wide, 2.5 mm thick between the cleats</td></tr>
+    <tr><th>Cleats</th><td>Stepped (6 × 5 mm, then 3 × 3 mm), 10.5 mm above the tyre (front 9 mm), 2 mm base fillets</td></tr>
+    <tr><th>Ratchet teeth</th><td>2.5 mm pitch, 1.2 mm tall, 45° ramp, 90° stop face, 0.4 mm root fillets</td></tr>
+    <tr><th>Head</th><td>19.7 mm tall, 3.6 mm floor, two-tooth wedge pawl propped by the strap under load, 0.5 mm clearances</td></tr>
+    <tr><th>Printing</th><td>On edge as an upright coil, about 178 × 166 mm, 25.5 mm tall</td></tr>
+    <tr><th>Rated strap tension</th><td>About 300 N in PA12, from a CalculiX FEM check (not a load test)</td></tr>
+    <tr><th>Best material</th><td>Unfilled PA12, or SLS/MJF PA12: tough in the cold and stable when warm. Avoid PLA, PETG, TPU and carbon- or glass-filled grades.</td></tr>
+    <tr><th>Files</th><td><a href="models/hunter350_rear_straight.stl">Metro rear STL</a> · <a href="models/hunter350_front_straight.stl">Metro front STL</a> · <a href="models/hunter350_rear_loop.stl">Metro rear installed pose</a></td></tr>
+    <tr><th>Loads by model</th><td><a href="https://github.com/Manish-404/zip-ties-3d-bike#pressure-and-torque-by-royal-enfield-model">Tooth pressure and wheel torque for the 350, 450 and 650 Royal Enfields</a></td></tr>
+    <tr><th>Guide</th><td><a href="https://github.com/Manish-404/zip-ties-3d-bike/blob/main/FITTING.md">Printing, fitting and riding guide</a></td></tr>
   </table>
 </div></section>
 

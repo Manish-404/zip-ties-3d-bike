@@ -1,0 +1,250 @@
+{
+ "assumptions": {
+  "mu_snow": 0.35,
+  "mu_ice": 0.15,
+  "mu_f": 0.4,
+  "theta_rad": 4.5,
+  "rear_share": 0.55,
+  "rider_kg": 75.0,
+  "rating_N": 300.0
+ },
+ "teeth": [
+  {
+   "loop_tension_N": 100,
+   "per_tooth_N": 50.0,
+   "bearing_MPa": 4.6,
+   "root_shear_MPa": 2.0,
+   "fem_fillet_peak_MPa": 13.0,
+   "core_tension_MPa": 2.8,
+   "one_tooth_bearing_MPa": 9.2
+  },
+  {
+   "loop_tension_N": 200,
+   "per_tooth_N": 100.0,
+   "bearing_MPa": 9.2,
+   "root_shear_MPa": 4.1,
+   "fem_fillet_peak_MPa": 26.0,
+   "core_tension_MPa": 5.6,
+   "one_tooth_bearing_MPa": 18.4
+  },
+  {
+   "loop_tension_N": 300,
+   "per_tooth_N": 150.0,
+   "bearing_MPa": 13.8,
+   "root_shear_MPa": 6.1,
+   "fem_fillet_peak_MPa": 39.0,
+   "core_tension_MPa": 8.3,
+   "one_tooth_bearing_MPa": 27.6
+  }
+ ],
+ "bikes": [
+  {
+   "model": "Hunter 350 Retro",
+   "cc": 349,
+   "torque_Nm": 27,
+   "kerb_kg": 177,
+   "rear_tyre": "120/80-17",
+   "preset": "RETRO_REAR",
+   "rolling_radius_mm": 303,
+   "rear_load_N": 1360,
+   "snow": {
+    "traction_force_N": 476,
+    "wheel_torque_Nm": 144,
+    "loop_tension_1strap_N": 264,
+    "loop_tension_2strap_N": 132
+   },
+   "ice": {
+    "traction_force_N": 204,
+    "wheel_torque_Nm": 62,
+    "loop_tension_1strap_N": 113,
+    "loop_tension_2strap_N": 57
+   },
+   "hold_1strap_N": 540,
+   "max_torque_1strap_Nm": 163,
+   "max_torque_2strap_Nm": 327,
+   "snow_utilisation_1strap_pct": 88
+  },
+  {
+   "model": "Hunter 350 Metro",
+   "cc": 349,
+   "torque_Nm": 27,
+   "kerb_kg": 181,
+   "rear_tyre": "140/70-17",
+   "preset": "METRO_REAR",
+   "rolling_radius_mm": 304,
+   "rear_load_N": 1381,
+   "snow": {
+    "traction_force_N": 483,
+    "wheel_torque_Nm": 147,
+    "loop_tension_1strap_N": 269,
+    "loop_tension_2strap_N": 134
+   },
+   "ice": {
+    "traction_force_N": 207,
+    "wheel_torque_Nm": 63,
+    "loop_tension_1strap_N": 115,
+    "loop_tension_2strap_N": 58
+   },
+   "hold_1strap_N": 540,
+   "max_torque_1strap_Nm": 164,
+   "max_torque_2strap_Nm": 329,
+   "snow_utilisation_1strap_pct": 90
+  },
+  {
+   "model": "Meteor 350",
+   "cc": 349,
+   "torque_Nm": 27,
+   "kerb_kg": 191,
+   "rear_tyre": "140/70-17",
+   "preset": null,
+   "rolling_radius_mm": 304,
+   "rear_load_N": 1435,
+   "snow": {
+    "traction_force_N": 502,
+    "wheel_torque_Nm": 153,
+    "loop_tension_1strap_N": 279,
+    "loop_tension_2strap_N": 140
+   },
+   "ice": {
+    "traction_force_N": 215,
+    "wheel_torque_Nm": 66,
+    "loop_tension_1strap_N": 120,
+    "loop_tension_2strap_N": 60
+   },
+   "hold_1strap_N": 540,
+   "max_torque_1strap_Nm": 164,
+   "max_torque_2strap_Nm": 329,
+   "snow_utilisation_1strap_pct": 93
+  },
+  {
+   "model": "Classic 350",
+   "cc": 349,
+   "torque_Nm": 27,
+   "kerb_kg": 195,
+   "rear_tyre": "120/80-18",
+   "preset": null,
+   "rolling_radius_mm": 315,
+   "rear_load_N": 1457,
+   "snow": {
+    "traction_force_N": 510,
+    "wheel_torque_Nm": 161,
+    "loop_tension_1strap_N": 283,
+    "loop_tension_2strap_N": 142
+   },
+   "ice": {
+    "traction_force_N": 219,
+    "wheel_torque_Nm": 69,
+    "loop_tension_1strap_N": 121,
+    "loop_tension_2strap_N": 61
+   },
+   "hold_1strap_N": 540,
+   "max_torque_1strap_Nm": 170,
+   "max_torque_2strap_Nm": 340,
+   "snow_utilisation_1strap_pct": 94
+  },
+  {
+   "model": "Himalayan 450",
+   "cc": 452,
+   "torque_Nm": 40,
+   "kerb_kg": 196,
+   "rear_tyre": "140/80-17",
+   "preset": null,
+   "rolling_radius_mm": 318,
+   "rear_load_N": 1462,
+   "snow": {
+    "traction_force_N": 512,
+    "wheel_torque_Nm": 163,
+    "loop_tension_1strap_N": 284,
+    "loop_tension_2strap_N": 142
+   },
+   "ice": {
+    "traction_force_N": 219,
+    "wheel_torque_Nm": 70,
+    "loop_tension_1strap_N": 122,
+    "loop_tension_2strap_N": 61
+   },
+   "hold_1strap_N": 540,
+   "max_torque_1strap_Nm": 172,
+   "max_torque_2strap_Nm": 344,
+   "snow_utilisation_1strap_pct": 95
+  },
+  {
+   "model": "Continental GT 650",
+   "cc": 648,
+   "torque_Nm": 52.3,
+   "kerb_kg": 202,
+   "rear_tyre": "130/70-18",
+   "preset": null,
+   "rolling_radius_mm": 310,
+   "rear_load_N": 1495,
+   "snow": {
+    "traction_force_N": 523,
+    "wheel_torque_Nm": 162,
+    "loop_tension_1strap_N": 291,
+    "loop_tension_2strap_N": 145
+   },
+   "ice": {
+    "traction_force_N": 224,
+    "wheel_torque_Nm": 69,
+    "loop_tension_1strap_N": 125,
+    "loop_tension_2strap_N": 62
+   },
+   "hold_1strap_N": 540,
+   "max_torque_1strap_Nm": 167,
+   "max_torque_2strap_Nm": 335,
+   "snow_utilisation_1strap_pct": 97
+  },
+  {
+   "model": "Interceptor 650",
+   "cc": 648,
+   "torque_Nm": 52,
+   "kerb_kg": 213,
+   "rear_tyre": "130/70-18",
+   "preset": null,
+   "rolling_radius_mm": 310,
+   "rear_load_N": 1554,
+   "snow": {
+    "traction_force_N": 544,
+    "wheel_torque_Nm": 169,
+    "loop_tension_1strap_N": 302,
+    "loop_tension_2strap_N": 151
+   },
+   "ice": {
+    "traction_force_N": 233,
+    "wheel_torque_Nm": 72,
+    "loop_tension_1strap_N": 129,
+    "loop_tension_2strap_N": 65
+   },
+   "hold_1strap_N": 540,
+   "max_torque_1strap_Nm": 167,
+   "max_torque_2strap_Nm": 335,
+   "snow_utilisation_1strap_pct": 101
+  },
+  {
+   "model": "Super Meteor 650",
+   "cc": 648,
+   "torque_Nm": 52.3,
+   "kerb_kg": 241,
+   "rear_tyre": "150/80-16",
+   "preset": null,
+   "rolling_radius_mm": 314,
+   "rear_load_N": 1705,
+   "snow": {
+    "traction_force_N": 597,
+    "wheel_torque_Nm": 187,
+    "loop_tension_1strap_N": 332,
+    "loop_tension_2strap_N": 166
+   },
+   "ice": {
+    "traction_force_N": 256,
+    "wheel_torque_Nm": 80,
+    "loop_tension_1strap_N": 142,
+    "loop_tension_2strap_N": 71
+   },
+   "hold_1strap_N": 540,
+   "max_torque_1strap_Nm": 169,
+   "max_torque_2strap_Nm": 339,
+   "snow_utilisation_1strap_pct": 111
+  }
+ ]
+}

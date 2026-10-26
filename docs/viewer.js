@@ -52,12 +52,12 @@ async function show(key) {
     const size = new THREE.Vector3(); geo.boundingBox.getSize(size);
     // after rotation: CAD y -> -z, CAD z -> y
     outer.position.y = size.z / 2 + 4;
-    outer.userData.span = Math.max(size.x, size.y, size.z);
+    outer.userData.radius = size.length() / 2;   // bounding sphere: fits at every turn angle
     cache[key] = outer;
   }
   current = cache[key]; pivot.add(current);
-  const s = current.userData.span;
-  camera.position.set(0, s * 0.5, s * 1.45);
+  const d = current.userData.radius / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2));
+  camera.position.set(0, d * 0.36, d * 1.03);   // about 10 % margin, 19 deg above
   controls.target.set(0, current.position.y, 0); controls.update();
 }
 function resize() {

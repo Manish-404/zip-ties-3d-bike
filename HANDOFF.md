@@ -16,6 +16,10 @@ Every script and file it mentions is in this folder.
 
 ## 0. Status at handoff
 
+> **Update, 27 October 2026:** the current design is the Hunter 350 strap v2: FreeCAD, STEP + STL, one preset per tyre, FEM-checked. **Read §8 first.**
+> - §1–§7 describe the original 23 October design. Its files are in `legacy/`.
+> - The v1 Hunter build from 25 October is superseded; its files are in git history.
+
 - **Done:** an original strap was designed and delivered: parametric, and it prints without supports. The deliverables were two STL files and a preview image, all in `out/`.
 - **Done:** the user then pasted a detailed production spec (§2.1) and asked whether the STL meets it, saying **"do not modify anything right just let me know"**.
   - The answer was that it only partly meets the spec; the list of deviations is in §2.2.
@@ -384,3 +388,150 @@ Raise these points with the user before building, because the spec leaves them o
 3. **Ambiguities.** Does "2.0–2.5 mm thick" include the teeth? Is the 0.5 mm channel tolerance per side or in total?
 4. **Bed fit.** The current coil pitch of 19.5 mm was sized so the 16 mm tread clears the 12 mm strap on the next turn. A 20–25 mm tread needs a wider pitch, which makes the coil bigger, and it may no longer fit on 200 × 200 mm unless the pitch changes along the strap. Confirm the bed size first.
 5. **Strength.** No one has calculated or tested whether the head survives "severe centrifugal and outward radial pulling forces". Say so plainly rather than calling the part production-ready.
+
+## 8. Hunter 350 strap v2 (sessions of 25–27 October 2026, FreeCAD)
+
+### 8.1 Requests (verbatim)
+
+> make the best of both strong can be fitted on hunter 350 tyre over the rims try to incooperate the best i have freecad already running
+
+> go ahead continue
+
+> go ahead complete it
+
+"Both" means the strap from §1 and the production spec in §2.1. The user also circled three features in new reference photos: stepped lugs, oval recesses between the lugs, and the buckle head.
+
+### 8.2 What exists now
+
+| Path | What it is |
+|---|---|
+| `cad/snow_strap_fc.py` | The generator: FreeCAD 1.1, OCC 7.8 B-rep. It runs as a GUI macro (one `Part::FeaturePython` per preset, every parameter a property) or headless (`freecadcmd cad/snow_strap_fc.py`, about 100 s). |
+| `cad/render_previews.py` | Plain numpy + matplotlib. It makes `preview_<preset>.png`, `fit_diagram.png` and `lock_section.png`, and writes `out/*_installed_pose.stl`. |
+| `out/` | For each preset: `.step`, `_straight.stl`, `_PRINT_on_edge_coil.stl` (coupon: `_PRINT_on_edge.stl`) and `_installed_pose.stl`. Plus `hunter350_snow_straps.FCStd`, `info.json` (all numbers and checks) and `head_section.json`. |
+| `FITTING.md` | The guide: which file, print settings, fitting steps, clearance check, riding rules, strength table. |
+| `README.md`, `docs/` | Updated for v2: the page's models, specs, 360° video and poster. `docs/viewer.js` now frames each model by its bounding sphere. |
+
+### 8.3 Design: what came from where
+
+| Feature | Source | v2 value |
+|---|---|---|
+| Lock | First strap (§3.3), upgraded | Open-top chamber; floor-rooted two-tooth wedge pawl, 2° lean, 1.8 mm root with 0.8 mm root fillets. The pawl teeth mirror the strap teeth. 0.75 mm engagement; pawl tip to strap core 0.45 mm. Under load the strap core props the pawl; without the prop it would deflect about 4 mm at 300 N. |
+| Head | Spec, plus a printability ring | 14.6 × 25.5 × 19.7 mm, with a 3.6 mm floor. Bed-band U-frame (5.0 mm) with a pillar and a 2.6 mm gusset ramping the floor into it. Solid 4.5 mm +y wall, 0.5 mm channel clearances, 0.8 mm entry chamfer. Slot, chamber and channel corners rounded at 1.2 / 0.7 / 0.5 mm. The convex pillar corner stays sharp, because OCC cannot round it next to the gusset. Root gusset 12.5 mm high, running 17 mm into the strap. These dimensions come from the 3D FEM (§8.5). |
+| Teeth | Spec 45°/90°, pitch changed | 2.5 mm pitch, 1.2 mm tall, 0.5 mm crest, 45° ramp, 90° stop face, 0.4 mm root and valley fillets. They start 15 mm past the far rim corner. 1.0 mm pitch (the spec) cannot be printed sharp by FDM. 2.0 mm pitch only left room for 0.25 mm fillets (§8.5). |
+| Tread | Spec + photos | Band 22 mm wide, 2.5 mm thick between lugs. Stepped full-width lugs at 24 mm pitch: lower tier 6 × 5 mm, upper tier 3 × 3 mm (front 3 × 1.5 mm), so 10.5 / 9 mm above the tyre. Fillets 2.0 / 0.8 / 0.6 / 1.0 mm. Oval dishes 0.3 mm deep in every gap. Five 0.45 mm V-groove micro-ribs under each lug. 12 mm radius in-ramp and 15 mm flange ramp. |
+| Tip | Spec | 35 mm long, tapering to 7 mm wide and 1.8 mm thick, rounded. |
+| Printing | New | On edge as an upright coil. Flat y becomes print Z and every section shares the bed edge (y = −11), so tension, teeth and pawl flex all lie in the layer plane. Coil radius 80 mm, 2 mm between turns. The coil warp keeps the neutral-axis length; the head prints straight. This fixes the §3.6 flat spiral, which bent the strap edgewise and could not be straightened. |
+| Sizing | New | One preset per tyre (§8.4). |
+| Use | New | Single-use: cut to remove. There is no release tab. |
+
+### 8.4 Sizing model
+
+The strap's path around a tyre-plus-rim section is modelled as:
+
+- the tyre contour C, from rim lip to rim lip: a half-ellipse crown plus straight lower sidewalls;
+- the rim's side face w on each side: 33 mm for cast wheels, 25 mm for spoke wheels;
+- the crossing X under the rim, between the two lower corners: 2·√(lip_x² + dip²).
+
+The head sits at the rim's outer lower corner (`s_corner = −3.25`), on the side away from the chain (rear) or the disc (front). From that:
+
+- the lug band is centred on the crown;
+- the teeth start at the far corner + 15 mm;
+- the lock sits about 17 mm up the channel once the loop closes (z_engage);
+- `total_len = ceil5(1.1·s_lock + 100 + head)`.
+
+`fit_report()` checks that the lock stays on the teeth for loops 10 % shorter or longer.
+
+| Preset | Tyre | Loop | Strap | Lugs | Teeth | Volume | Tail after lock |
+|---|---|---|---|---|---|---|---|
+| METRO_FRONT | 110/70-17, MT3.00 cast | 359 mm | 525 mm | 4 (9 mm) | 78 | 31.8 cm³ | 137 mm |
+| METRO_REAR | 140/70-17, ~MT3.50 cast | 438 mm | 615 mm | 5 (10.5 mm) | 87 | 36.9 cm³ | 148 mm |
+| RETRO_FRONT | 100/80-17, 2.15 spoke | 325 mm | 490 mm | 4 (9 mm) | 68 | 30.3 cm³ | 137 mm |
+| RETRO_REAR | 120/80-17, 2.50 spoke | 381 mm | 550 mm | 5 (10.5 mm) | 73 | 34.2 cm³ | 141 mm |
+| COUPON | none | none | 230 mm | 2 | 34 | 18.1 cm³ | none |
+
+Mass in PA12 is about 1.01 g per cm³. The coils are 177–178.5 × 164–166 mm and 25.5 mm tall. The smallest gap between turns is 2.0 mm (METRO_REAR); the shorter straps make only about one turn.
+
+### 8.5 Verification
+
+**CAD**
+- Every preset is one valid solid.
+- Meshes are closed and consistently oriented after `drop_fins()`. OCC leaves zero-length edges where fillets end on 2D-rounded profile corners, and the tessellator turns them into zero-volume fins.
+- The straight STL is built from a split B-rep (`max_seg = 3`) and refined along x, so it bends smoothly into the coil without fan triangles.
+
+**FEM (CalculiX 2.22 from FreeCAD)**
+- 2D plane-strain NLGEOM model of the pawl section at y = 0, 6-node triangles. The strap-core prop uses active-set contact: the tip nodes are held at the 0.45 mm gap, and nodes that pull are released.
+- Material: PA12 at E = 1500 MPa (2500 MPa cold), ν = 0.4.
+- Loads are spread over the 14.5 mm engaged width (click force over the 20 mm pawl).
+- Click: lateral force plus (1 + μ)/(1 − μ) times as much vertical force (μ = 0.3), scaled to 0.9 mm tip travel, as in the beam model.
+- Mesh convergence: click strain 2.67 / 2.69 % (16 k / 83 k nodes). Linear fillet peak 82.6 / 81.7 MPa (17 k / 88 k nodes).
+- Scripts are in the session scratchpad (`fem/`), not the repo.
+
+| Case (final geometry) | Pawl root / body (von Mises) | Teeth peak | Notes |
+|---|---|---|---|
+| Click, 0.9 mm | 2.68 % max principal strain at the front root fillet | none | Pull-through 48 N warm, 80 N cold |
+| 300 N on the top tooth | 25 / 28 MPa | 44 MPa tension, 96 MPa compression (valley fillet) | Prop force 39 N |
+| 300 N shared by both teeth | 23 / 30 MPa | 39 MPa tension (lower shelf-root fillet) | Prop force 54 N |
+| 300 N shared, cold (E 2500) | 22 / 31 MPa | 38.5 MPa | none |
+| 300 N on the lower tooth only | 24 / 33 MPa | 87 MPa local peak | Local yield, then the load shares onto the other tooth |
+| 500 N shared | 51 / 51 MPa (59 MPa compression at the root) | 66 MPa | Beyond FDM PA12 |
+| 3D head seated on the rim, 300 N | Head frame 43–49 MPa local peaks (slot corner, pawl root at the floor); walls ≤ 36 MPa; across print layers ≤ 30 MPa | 69 MPa in the teeth zone (over-constrained tips) | Rim carries 395–400 N; max displacement 0.7–0.8 mm |
+| 3D head seated on the rim, 500 N | Head frame 68–72 MPa; walls ≤ 57 MPa | 88 MPa | Beyond PA12 |
+
+**Tooth-root variant study** (300 N shared / lower tooth only / click strain):
+
+| Variant | Shared | Lower only | Click |
+|---|---|---|---|
+| 2.0 mm pitch, 0.25 mm fillets | 54 MPa | about 110 MPa | 2.67 % |
+| 0.35 mm shelf fillet | 49 MPa | 104 MPa | 2.68 % |
+| 2.2 mm pitch | 42 MPa | 92 MPa | 2.78 % |
+| **2.5 mm pitch, head 18.5 mm (chosen)** | **38–39 MPa** | **84–87 MPa** | **2.73 %** |
+
+**3D head model.**
+- 160–183 k-node C3D10 meshes (gmsh Delaunay; HXT hangs on this geometry). The root is cut at s = 10.
+- Holding the head only at that cut (floating) is unrealistic. Seated: the tail pulls the pawl axially inward and the strap body pulls the head radially outward, so the rim's side face carries the front of the head (s ≥ −3.25). The pawl tips are held at the 0.45 mm prop.
+- The floor ring's peak at 300 N fell with each change:
+  - 188 MPa with a 2.4 mm floor and a sharp pillar root;
+  - 116–140 MPa with the gusset;
+  - 64–83 MPa with a 3.6 mm floor, a 5 mm bed band and an 18.5 → 19.7 mm head (same pawl free length, so the same click strain);
+  - 43–49 MPa with the gusset lengthened and 1.2 mm slot corners.
+
+**Rating:** about 300 N of strap tension for PA12, FDM or SLS. SLS is more consistent but not much stronger in-plane. Above that the teeth yield. Dry PA6/PA66 is a little stronger but loses that with moisture, so a molded part is the way to go higher. The limit is the teeth, not the head.
+
+### 8.6 Printability review (on edge, y up)
+
+- **No supports.** All features are vertical walls in print, except:
+  - the rib grooves (42° from vertical);
+  - the dish walls (≤ 5°);
+  - the entry chamfer (45°);
+  - the tip end's bottom round (r 3.5; small and harmless).
+- **Bridges.**
+  - The +y side wall bridges the chamber: 8.6 mm span, 1.0 mm above the pawl top.
+  - The slot top bridges 4.1 mm.
+- **Gaps.**
+  - Pawl back to back wall: 1.3–1.8 mm.
+  - Pawl tips to pillar: raised from 0.8 to 1.0 mm, because elephant's foot could fuse them on the first layers.
+  - Between coil turns: 2.0 mm.
+- **Fit.** The coil just fits a 180 mm bed without a brim (178.5 mm at most) and is 25.5 mm tall. With a 5 mm brim it needs about 200 mm.
+- **Material.** Unfilled PA12 or PA6, dried. Not carbon- or glass-filled: the pawl strain is about 2.7 %. Not PLA, PETG or TPU.
+
+### 8.7 Not verified (tell the user)
+
+- **Which side the Hunter 350's chain and rear caliper are on.** A web search found the brake sizes (300 mm front disc, 270 mm rear disc on the Metro, dual-channel ABS) but not the side. The fitting rule is "side away from the chain (rear) or the disc (front)", and the user must check it.
+- **The section model's dimensions:**
+  - rim widths (the 140/70 rear is assumed on about MT3.50);
+  - rim depth (w = 33 / 25 mm);
+  - the dip under the rim.
+- **Clearances.** The head stands 19.7 mm out from the rim face, and the lugs are 10.5 / 9 mm. Clearance to the fork, swingarm, mudguard, caliper and ABS ring is not checked.
+- **No physical tests.** No load, fatigue, cold-impact or ice-impact test has been done. The test-piece pull test in FITTING.md §2 is the first real check.
+
+### 8.8 Rebuild
+
+```powershell
+& "D:\Software\FreeCAD\bin\freecadcmd.exe" cad\snow_strap_fc.py           # out/: STEP, STL, coils, FCStd, info.json
+& "D:\Software\FreeCAD\bin\python.exe" cad\render_previews.py out docs\images   # previews, diagrams, installed poses
+```
+
+To refresh the project page:
+- copy `out/hunter350_metro_rear_installed_pose.stl` to `docs/models/hunter350_rear_loop.stl`, and the Metro straight STLs over the rear and front straight models;
+- serve `docs/` and capture `index.html?render&m=loop` with `setAngle()` in headless Chrome (144 frames, 1048 × 720);
+- encode with `ffmpeg -framerate 24 … -c:v libx264 -pix_fmt yuv420p`.

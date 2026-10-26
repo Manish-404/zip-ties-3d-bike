@@ -6,7 +6,6 @@ claude-notes/
 *.FCBak
 *.FCStd1
 
-# Third-party reference screenshots and huge print-coil meshes
+# Third-party reference screenshots (the print coils are small now and are committed)
 *.jpg
-*_coil.stl
 __pycache__/
