@@ -59,3 +59,7 @@ Chains and straps on a two-wheeler change handling. Check clearance against the 
 ## Project page
 
 The 3D viewer, 360° video and reference photos are in [`docs/`](docs/) (`docs/index.html`, served by GitHub Pages).
+
+## License
+
+[CC BY-NC 4.0](LICENSE): free to use, modify and share with attribution, **for non-commercial purposes only**. No commercial use of any kind, including selling the files or prints made from them. The product photos in `docs/images/*.jpg` are not covered by this license.
