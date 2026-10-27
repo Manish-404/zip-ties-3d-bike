@@ -7,8 +7,9 @@ non-chain / non-disc side. It combines:
   * the 2026-10-23 strap: open-top lock with a floor-rooted, wedge-locking
     two-tooth pawl, a thick root gusset and FDM-friendly 2 mm teeth;
   * the production spec: stepped filleted lugs, oval dishes, tyre-side
-    micro-ribs, 45 deg ramps / 90 deg stops, 0.5 mm channel clearance,
-    entry chamfer, rounded tapered tip, gradual ramps;
+    anti-slip texture (raised grip dots, not grooves), 45 deg ramps / 90 deg
+    stops, 0.5 mm channel clearance, entry chamfer, rounded tapered tip,
+    gradual ramps;
   * the 2026-10-25 design review: closed in-plane ring in the head for
     on-edge printing, longer pawl (lower ratchet strain), pawl teeth that
     mirror the strap teeth, thin fatigue-tolerant band between the lugs,
@@ -98,7 +99,11 @@ BASE = dict(
     dish_w=16.0,
     dish_depth=0.3,
     dish_C=4.0,             # ellipsoid depth semi-axis (sets the dish slope)
-    rib_n=5,                # tyre-side micro-rib grooves, under each lug only
+    dot_r=1.5,              # tyre-side grip dots: base radius of each dome
+    dot_h=0.55,             # dome height above the tyre side; h / r = 0.37 keeps the printed overhang at 40 deg
+    dot_pitch=5.0,          # centre spacing on a staggered (hex) grid across the whole tread band
+    dot_margin=0.8,         # clear space between a dot's base and the band edge
+    rib_n=0,                # old tyre-side V-groove option (recessed, under each lug); 0 = off, dots replace it
     rib_pitch=4.0,
     rib_w=1.0,
     rib_depth=0.45,
@@ -463,6 +468,38 @@ def ellipsoid(a, b, c, center):
     return e
 
 
+def tyre_dots(P, L, plan_face):
+    """Grip dots on the tyre side of the tread band: spherical caps on a staggered
+    grid, each dot_h proud of z = 0 and dot_margin clear of the band's edges.
+    Raised domes press into the tread rubber from every direction; grooves cannot."""
+    r, h, p = P["dot_r"], P["dot_h"], P["dot_pitch"]
+    if r <= 0 or h <= 0 or p <= 2 * r:
+        return []
+    R = (r * r + h * h) / (2.0 * h)                  # sphere the cap is cut from
+    z_in = 0.3                                       # the cap overlaps the strap by this much
+    cap = Part.makeSphere(R, App.Vector(0, 0, R - h)).common(
+        Part.makeBox(2 * R + 2, 2 * R + 2, h + z_in + 0.5, App.Vector(-R - 1, -R - 1, -h - 0.5)))
+    keep = r + P["dot_margin"]
+    dy = p * math.sqrt(3.0) / 2.0
+    n_rows = 2 * int(math.floor((P["W_band"] / 2.0 - keep) / dy)) + 1     # symmetric about the centreline
+    yc = P["y_bed"] + P["W_band"] / 2.0
+    x_lo, x_hi = P["band_start"] + keep, L["band_end"] - keep             # centres stay inside the band
+    n_cols = int((x_hi - x_lo - p / 2.0) // p) + 1                        # odd rows shift by p / 2
+    xs = x_lo + ((x_hi - x_lo) - ((n_cols - 1) * p + p / 2.0)) / 2.0      # centre the pattern
+    outline = plan_face.OuterWire
+    dots = []
+    for j in range(n_rows):
+        y = yc + (j - (n_rows - 1) / 2.0) * dy
+        for k in range(n_cols):
+            x = xs + k * p + (p / 2.0 if j % 2 else 0.0)
+            pt = App.Vector(x, y, -1.0)               # the plan face lies at z = -1
+            if plan_face.isInside(pt, 1e-6, True) and Part.Vertex(pt).distToShape(outline)[0] >= keep:
+                d = cap.copy()
+                d.translate(App.Vector(x, y, 0.0))
+                dots.append(d)
+    return dots
+
+
 def build_body(P, L, max_seg=None):
     sp = side_profile(P, L)
     side = prism_xz(*split_pts(sp), P["y_bed"] - 1.0, P["y_bed"] + L["head_W"] + 1.0, max_seg)
@@ -494,6 +531,10 @@ def build_body(P, L, max_seg=None):
                 tools.append(Part.Face(tri).extrude(App.Vector(rl, 0, 0)))
     if tools:
         body = body.cut(Part.makeCompound(tools))
+    dots = tyre_dots(P, L, pf)
+    L["n_dots"] = len(dots)
+    if dots:
+        body = body.multiFuse(dots)
     return body
 
 
@@ -550,7 +591,7 @@ def fit_report(P, L):
 # --------------------------------------------------------------------------
 # Meshes, print coil, STL
 # --------------------------------------------------------------------------
-def shape_arrays(shape, lin=0.02, ang=0.25):
+def shape_arrays(shape, lin=0.03, ang=0.35):
     import numpy as np
     import MeshPart
     m = MeshPart.meshFromShape(Shape=shape, LinearDeflection=lin, AngularDeflection=ang, Relative=False)
@@ -740,6 +781,7 @@ GROUPS = [
               "pawl_shelf_r", "pawl_valley_r", "pillar_gap", "pillar_gusset_h", "pillar_gusset_len"]),
     ("Tread", ["T_neck", "band_start", "inramp_len", "T_band", "W_band", "flange_len",
                "dish_every", "dish_len", "dish_w", "dish_depth", "dish_C",
+               "dot_r", "dot_h", "dot_pitch", "dot_margin",
                "rib_n", "rib_pitch", "rib_w", "rib_depth"]),
     ("Lugs", ["n_lugs", "lug_pitch", "lug_len1", "lug_h1", "lug_len2", "lug_h2",
               "r_lug_base", "r_lug_top1", "r_lug_step", "r_lug_top2"]),
@@ -768,18 +810,22 @@ class SnowStrapFeature:
         obj.addProperty("App::PropertyFloat", "Volume_cm3", "Result", "solid volume", 1)
         obj.addProperty("App::PropertyFloat", "Engagement", "Result", "pawl/tooth overlap at rest, mm", 1)
         obj.addProperty("App::PropertyInteger", "Teeth", "Result", "number of strap teeth", 1)
+        obj.addProperty("App::PropertyInteger", "Dots", "Result", "number of tyre-side grip dots", 1)
 
     def execute(self, obj):
         P = dict(BASE)
         P["preset"] = obj.Preset
         for _, names in GROUPS:
             for nm in names:
-                P[nm] = int(getattr(obj, nm)) if nm in INT_PARAMS else float(getattr(obj, nm))
+                v = getattr(obj, nm, BASE[nm])      # documents saved before a parameter existed
+                P[nm] = int(v) if nm in INT_PARAMS else float(v)
         shape, L = build_strap(P)
         obj.Shape = shape
         obj.Volume_cm3 = round(shape.Volume / 1000.0, 2)
         obj.Engagement = round(L["engage"], 3)
         obj.Teeth = int(L["n_teeth"])
+        if hasattr(obj, "Dots"):
+            obj.Dots = int(L.get("n_dots", 0))
 
     def dumps(self):
         return None
@@ -859,6 +905,11 @@ def export_preset(preset, outdir, log=print):
                       tip=[round(L["tip_start"], 1), round(L["L_s"], 1)]),
         teeth=L["n_teeth"], lugs=P["n_lugs"],
         lug_height_above_tyre=round(P["T_band"] + P["lug_h1"] + P["lug_h2"], 2),
+        grip_dots=dict(count=int(L.get("n_dots", 0)), base_radius=P["dot_r"], height=P["dot_h"],
+                       pitch=P["dot_pitch"],
+                       overhang_deg_on_edge=round(2 * math.degrees(math.atan(P["dot_h"] / P["dot_r"])), 1),
+                       base_coverage_pct=round(100 * math.pi * P["dot_r"] ** 2
+                                               / (math.sqrt(3.0) / 2.0 * P["dot_pitch"] ** 2), 1)),
         mesh_straight=dict(triangles=int(len(T)), **m_straight, volume_cm3=round(volume_of(V, T) / 1000, 2)),
         mesh_print=dict(triangles=int(len(T)), volume_cm3=round(volume_of(Vw, T) / 1000, 2),
                         footprint_mm=[round(float(hi[0] - lo[0]), 1), round(float(hi[1] - lo[1]), 1)],

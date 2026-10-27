@@ -73,8 +73,9 @@ def preview(out, img_dir, key, info):
     view3d(ax, straight, 32, -58, lims=((b0 - 8, b0 + 76), (-12, 12), (-1, 12)))
     ax.set_title("Tread: stepped lugs (%.1f mm tall), shallow oval dishes" % lug_h)
     ax = fig.add_subplot(3, 2, 3, projection="3d")
-    view3d(ax, straight, -38, -58, lims=((b0 - 8, b0 + 76), (-12, 12), (-1, 12)), light=(0.4, -0.6, -0.7))
-    ax.set_title("Tyre side: micro-rib grooves under each lug")
+    view3d(ax, straight, -38, -58, lims=((b0 - 4, b0 + 52), (-12, 12), (-1, 12)), light=(0.4, -0.6, -0.7))
+    gd = info["grip_dots"]
+    ax.set_title("Tyre side: %d grip dots, %.1f mm domes %.2f mm tall" % (gd["count"], 2 * gd["base_radius"], gd["height"]))
     ax = fig.add_subplot(3, 2, 4, projection="3d")
     view3d(ax, straight, 30, -70, lims=((t0 - 20, t0 + 22), (-12, 12), (-1, 6)))
     pitch = (sec["teeth"][1] - sec["teeth"][0]) / info["teeth"]

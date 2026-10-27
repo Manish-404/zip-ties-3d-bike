@@ -9,7 +9,7 @@ A 3D-printable, zip-tie style anti-skid strap for motorcycle tyres. It threads t
 Version 2 combines two earlier designs and sizes the strap for each Hunter 350 tyre:
 
 - from the first strap: the open-top lock with a floor-rooted wedge pawl, and FDM-friendly teeth;
-- from the production spec: stepped filleted lugs, oval dishes, tyre-side micro-ribs, 45°/90° teeth, 0.5 mm clearances, an entry chamfer, a rounded tip and gradual ramps.
+- from the production spec: stepped filleted lugs, oval dishes, tyre-side grip dots, 45°/90° teeth, 0.5 mm clearances, an entry chamfer, a rounded tip and gradual ramps.
 
 A finite-element check of the pawl and head set the final tooth shape.
 
@@ -19,7 +19,7 @@ A finite-element check of the pawl and head set the final tooth shape.
 - **Shaped by the FEM.**
   - The teeth are at 2.5 mm pitch with 0.4 mm root fillets. At 2.0 mm pitch the 0.25 mm fillets ran about 30 % higher stress.
   - The head has a 3.6 mm floor, a wider frame beside the slot and a gusset into the pillar. With a 2.4 mm floor, the frame would have yielded at about 120 N.
-- **Stepped lugs, 10.5 mm above the tyre** (9 mm on the front, for mudguard clearance). Base fillets are 2 mm, with shallow dishes between the lugs and V-groove micro-ribs underneath.
+- **Stepped lugs, 10.5 mm above the tyre** (9 mm on the front, for mudguard clearance). Base fillets are 2 mm, with shallow dishes between the lugs and raised grip dots (3 mm domes, 0.55 mm tall, staggered 5 mm grid) on the tyre side.
 - **Gradual ramps throughout**, a rounded 35 mm tip, and a thick root gusset where the strap leaves the head.
 
 ![How it locks: cut through the head](docs/images/lock_section.png)

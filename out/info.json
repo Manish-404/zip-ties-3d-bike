@@ -10,20 +10,20 @@
       "valid": true,
       "solids": 1,
       "shells": 1,
-      "faces": 724
+      "faces": 734
     },
-    "volume_cm3": 31.79,
+    "volume_cm3": 32.01,
     "mass_g": {
-      "PA12": 32.1,
-      "PA6": 36.2,
-      "PA12_SLS": 30.2
+      "PA12": 32.3,
+      "PA6": 36.5,
+      "PA12_SLS": 30.4
     },
     "bbox_straight": [
       -14.6,
       510.4,
       -11.0,
       14.5,
-      -0.0,
+      -0.55,
       19.7
     ],
     "length_total": 525.0,
@@ -75,16 +75,24 @@
     "teeth": 78,
     "lugs": 4,
     "lug_height_above_tyre": 9.0,
+    "grip_dots": {
+      "count": 90,
+      "base_radius": 1.5,
+      "height": 0.55,
+      "pitch": 5.0,
+      "overhang_deg_on_edge": 40.3,
+      "base_coverage_pct": 32.6
+    },
     "mesh_straight": {
-      "triangles": 28782,
+      "triangles": 42574,
       "directed_edge_dupes": 0,
       "unmatched_edges": 0,
       "closed": true,
-      "volume_cm3": 31.79
+      "volume_cm3": 32.01
     },
     "mesh_print": {
-      "triangles": 28782,
-      "volume_cm3": 32.0,
+      "triangles": 42574,
+      "volume_cm3": 32.21,
       "footprint_mm": [
         177.7,
         164.6
@@ -155,20 +163,20 @@
       "valid": true,
       "solids": 1,
       "shells": 1,
-      "faces": 823
+      "faces": 838
     },
-    "volume_cm3": 36.88,
+    "volume_cm3": 37.16,
     "mass_g": {
-      "PA12": 37.3,
-      "PA6": 42.0,
-      "PA12_SLS": 35.0
+      "PA12": 37.5,
+      "PA6": 42.4,
+      "PA12_SLS": 35.3
     },
     "bbox_straight": [
       -14.6,
       600.4,
       -11.0,
       14.5,
-      -0.0,
+      -0.55,
       19.7
     ],
     "length_total": 615.0,
@@ -220,16 +228,24 @@
     "teeth": 87,
     "lugs": 5,
     "lug_height_above_tyre": 10.5,
+    "grip_dots": {
+      "count": 115,
+      "base_radius": 1.5,
+      "height": 0.55,
+      "pitch": 5.0,
+      "overhang_deg_on_edge": 40.3,
+      "base_coverage_pct": 32.6
+    },
     "mesh_straight": {
-      "triangles": 35282,
+      "triangles": 53064,
       "directed_edge_dupes": 0,
       "unmatched_edges": 0,
       "closed": true,
-      "volume_cm3": 36.89
+      "volume_cm3": 37.17
     },
     "mesh_print": {
-      "triangles": 35282,
-      "volume_cm3": 37.2,
+      "triangles": 53064,
+      "volume_cm3": 37.46,
       "footprint_mm": [
         177.3,
         165.9
@@ -300,20 +316,20 @@
       "valid": true,
       "solids": 1,
       "shells": 1,
-      "faces": 664
+      "faces": 674
     },
-    "volume_cm3": 30.31,
+    "volume_cm3": 30.53,
     "mass_g": {
-      "PA12": 30.6,
-      "PA6": 34.6,
-      "PA12_SLS": 28.8
+      "PA12": 30.8,
+      "PA6": 34.8,
+      "PA12_SLS": 29.0
     },
     "bbox_straight": [
       -14.6,
       475.4,
       -11.0,
       14.5,
-      -0.0,
+      -0.55,
       19.7
     ],
     "length_total": 490.0,
@@ -365,16 +381,24 @@
     "teeth": 68,
     "lugs": 4,
     "lug_height_above_tyre": 9.0,
+    "grip_dots": {
+      "count": 90,
+      "base_radius": 1.5,
+      "height": 0.55,
+      "pitch": 5.0,
+      "overhang_deg_on_edge": 40.3,
+      "base_coverage_pct": 32.6
+    },
     "mesh_straight": {
-      "triangles": 27468,
+      "triangles": 41640,
       "directed_edge_dupes": 0,
       "unmatched_edges": 0,
       "closed": true,
-      "volume_cm3": 30.32
+      "volume_cm3": 30.53
     },
     "mesh_print": {
-      "triangles": 27468,
-      "volume_cm3": 30.52,
+      "triangles": 41640,
+      "volume_cm3": 30.73,
       "footprint_mm": [
         178.5,
         164.2
@@ -445,20 +469,20 @@
       "valid": true,
       "solids": 1,
       "shells": 1,
-      "faces": 739
+      "faces": 754
     },
-    "volume_cm3": 34.22,
+    "volume_cm3": 34.5,
     "mass_g": {
-      "PA12": 34.6,
-      "PA6": 39.0,
-      "PA12_SLS": 32.5
+      "PA12": 34.8,
+      "PA6": 39.3,
+      "PA12_SLS": 32.8
     },
     "bbox_straight": [
       -14.6,
       535.4,
       -11.0,
       14.5,
-      -0.0,
+      -0.55,
       19.7
     ],
     "length_total": 550.0,
@@ -510,16 +534,24 @@
     "teeth": 73,
     "lugs": 5,
     "lug_height_above_tyre": 10.5,
+    "grip_dots": {
+      "count": 115,
+      "base_radius": 1.5,
+      "height": 0.55,
+      "pitch": 5.0,
+      "overhang_deg_on_edge": 40.3,
+      "base_coverage_pct": 32.6
+    },
     "mesh_straight": {
-      "triangles": 33528,
+      "triangles": 51770,
       "directed_edge_dupes": 0,
       "unmatched_edges": 0,
       "closed": true,
-      "volume_cm3": 34.22
+      "volume_cm3": 34.5
     },
     "mesh_print": {
-      "triangles": 33528,
-      "volume_cm3": 34.52,
+      "triangles": 51770,
+      "volume_cm3": 34.79,
       "footprint_mm": [
         177.3,
         166.0
@@ -590,20 +622,20 @@
       "valid": true,
       "solids": 1,
       "shells": 1,
-      "faces": 370
+      "faces": 374
     },
-    "volume_cm3": 18.05,
+    "volume_cm3": 18.15,
     "mass_g": {
-      "PA12": 18.2,
-      "PA6": 20.6,
-      "PA12_SLS": 17.1
+      "PA12": 18.3,
+      "PA6": 20.7,
+      "PA12_SLS": 17.2
     },
     "bbox_straight": [
       -14.6,
       215.4,
       -11.0,
       14.5,
-      -0.0,
+      -0.55,
       19.7
     ],
     "length_total": 230.0,
@@ -655,19 +687,27 @@
     "teeth": 34,
     "lugs": 2,
     "lug_height_above_tyre": 10.5,
+    "grip_dots": {
+      "count": 44,
+      "base_radius": 1.5,
+      "height": 0.55,
+      "pitch": 5.0,
+      "overhang_deg_on_edge": 40.3,
+      "base_coverage_pct": 32.6
+    },
     "mesh_straight": {
-      "triangles": 12482,
+      "triangles": 19936,
       "directed_edge_dupes": 0,
       "unmatched_edges": 0,
       "closed": true,
-      "volume_cm3": 18.05
+      "volume_cm3": 18.15
     },
     "mesh_print": {
-      "triangles": 12482,
-      "volume_cm3": 18.05,
+      "triangles": 19936,
+      "volume_cm3": 18.15,
       "footprint_mm": [
         230.0,
-        19.7
+        20.3
       ],
       "height_mm": 25.5,
       "coiled": false,

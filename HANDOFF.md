@@ -418,7 +418,7 @@ Raise these points with the user before building, because the spec leaves them o
 | Lock | First strap (§3.3), upgraded | Open-top chamber; floor-rooted two-tooth wedge pawl, 2° lean, 1.8 mm root with 0.8 mm root fillets. The pawl teeth mirror the strap teeth. 0.75 mm engagement; pawl tip to strap core 0.45 mm. Under load the strap core props the pawl; without the prop it would deflect about 4 mm at 300 N. |
 | Head | Spec, plus a printability ring | 14.6 × 25.5 × 19.7 mm, with a 3.6 mm floor. Bed-band U-frame (5.0 mm) with a pillar and a 2.6 mm gusset ramping the floor into it. Solid 4.5 mm +y wall, 0.5 mm channel clearances, 0.8 mm entry chamfer. Slot, chamber and channel corners rounded at 1.2 / 0.7 / 0.5 mm. The convex pillar corner stays sharp, because OCC cannot round it next to the gusset. Root gusset 12.5 mm high, running 17 mm into the strap. These dimensions come from the 3D FEM (§8.5). |
 | Teeth | Spec 45°/90°, pitch changed | 2.5 mm pitch, 1.2 mm tall, 0.5 mm crest, 45° ramp, 90° stop face, 0.4 mm root and valley fillets. They start 15 mm past the far rim corner. 1.0 mm pitch (the spec) cannot be printed sharp by FDM. 2.0 mm pitch only left room for 0.25 mm fillets (§8.5). |
-| Tread | Spec + photos | Band 22 mm wide, 2.5 mm thick between lugs. Stepped full-width lugs at 24 mm pitch: lower tier 6 × 5 mm, upper tier 3 × 3 mm (front 3 × 1.5 mm), so 10.5 / 9 mm above the tyre. Fillets 2.0 / 0.8 / 0.6 / 1.0 mm. Oval dishes 0.3 mm deep in every gap. Five 0.45 mm V-groove micro-ribs under each lug. 12 mm radius in-ramp and 15 mm flange ramp. |
+| Tread | Spec + photos | Band 22 mm wide, 2.5 mm thick between lugs. Stepped full-width lugs at 24 mm pitch: lower tier 6 × 5 mm, upper tier 3 × 3 mm (front 3 × 1.5 mm), so 10.5 / 9 mm above the tyre. Fillets 2.0 / 0.8 / 0.6 / 1.0 mm. Oval dishes 0.3 mm deep in every gap. Staggered grip dots on the tyre side (3 mm domes, 0.55 mm tall, 5 mm pitch, 90–115 per strap) replace the V-grooves. 12 mm radius in-ramp and 15 mm flange ramp. |
 | Tip | Spec | 35 mm long, tapering to 7 mm wide and 1.8 mm thick, rounded. |
 | Printing | New | On edge as an upright coil. Flat y becomes print Z and every section shares the bed edge (y = −11), so tension, teeth and pawl flex all lie in the layer plane. Coil radius 80 mm, 2 mm between turns. The coil warp keeps the neutral-axis length; the head prints straight. This fixes the §3.6 flat spiral, which bent the strap edgewise and could not be straightened. |
 | Sizing | New | One preset per tyre (§8.4). |
@@ -500,7 +500,7 @@ Mass in PA12 is about 1.01 g per cm³. The coils are 177–178.5 × 164–166 mm
 ### 8.6 Printability review (on edge, y up)
 
 - **No supports.** All features are vertical walls in print, except:
-  - the rib grooves (42° from vertical);
+  - the grip-dot domes (40° overhang);
   - the dish walls (≤ 5°);
   - the entry chamfer (45°);
   - the tip end's bottom round (r 3.5; small and harmless).
