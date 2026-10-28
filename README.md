@@ -19,7 +19,8 @@ A finite-element check of the pawl and head set the final tooth shape.
 - **Shaped by the FEM.**
   - The teeth are at 2.5 mm pitch with 0.4 mm root fillets. At 2.0 mm pitch the 0.25 mm fillets ran about 30 % higher stress.
   - The head has a 3.6 mm floor, a wider frame beside the slot and a gusset into the pillar. With a 2.4 mm floor, the frame would have yielded at about 120 N.
-- **Stepped lugs, 10.5 mm above the tyre** (9 mm on the front, for mudguard clearance). Base fillets are 2 mm, with shallow dishes between the lugs and raised grip dots (3 mm domes, 0.55 mm tall, staggered 5 mm grid) on the tyre side.
+- **Stepped lugs, 10.5 mm above the tyre** (9 mm on the front, for mudguard clearance). Base fillets are 2 mm, with shallow dishes between the lugs and raised grip dots (3 mm domes, 0.55 mm tall, staggered 8 mm grid, 5 mm clear between dots, sized to the tyre's groove spacing) on the tyre side.
+- **Rectangular-lug variant (`_RECT`).** The same strap with square-cornered lugs, a small rectangle on a big one, as in the reference strap (no oval dishes between the lugs): `out/rect/hunter350_<preset>_rect_*`. Build it with a `_RECT` preset name, e.g. `METRO_REAR_RECT`.
 - **Gradual ramps throughout**, a rounded 35 mm tip, and a thick root gusset where the strap leaves the head.
 
 ![How it locks: cut through the head](docs/images/lock_section.png)
