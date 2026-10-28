@@ -104,7 +104,7 @@ BASE = dict(
     dish_C=4.0,             # ellipsoid depth semi-axis (sets the dish slope)
     dot_r=1.5,              # tyre-side grip dots: base radius of each dome
     dot_h=0.55,             # dome height above the tyre side; h / r = 0.37 keeps the printed overhang at 40 deg
-    dot_pitch=5.0,          # centre spacing on a staggered (hex) grid across the whole tread band
+    dot_pitch=8.0,          # centre spacing on a staggered (hex) grid; 8 = 5 mm gap between dots, 3 rows across the band (tyre grooves repeat every ~40 mm)
     dot_margin=0.8,         # clear space between a dot's base and the band edge
     rib_n=0,                # old tyre-side V-groove option (recessed, under each lug); 0 = off, dots replace it
     rib_pitch=4.0,
