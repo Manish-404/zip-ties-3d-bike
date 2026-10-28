@@ -1,6 +1,7 @@
 {
   "METRO_FRONT": {
     "preset": "METRO_FRONT",
+    "lug_style": "STEPPED",
     "files": {
       "step": "hunter350_metro_front.step",
       "stl_straight": "hunter350_metro_front_straight.stl",
@@ -10,13 +11,13 @@
       "valid": true,
       "solids": 1,
       "shells": 1,
-      "faces": 734
+      "faces": 677
     },
-    "volume_cm3": 32.01,
+    "volume_cm3": 31.89,
     "mass_g": {
-      "PA12": 32.3,
-      "PA6": 36.5,
-      "PA12_SLS": 30.4
+      "PA12": 32.2,
+      "PA6": 36.4,
+      "PA12_SLS": 30.3
     },
     "bbox_straight": [
       -14.6,
@@ -76,23 +77,23 @@
     "lugs": 4,
     "lug_height_above_tyre": 9.0,
     "grip_dots": {
-      "count": 90,
+      "count": 33,
       "base_radius": 1.5,
       "height": 0.55,
-      "pitch": 5.0,
+      "pitch": 8.0,
       "overhang_deg_on_edge": 40.3,
-      "base_coverage_pct": 32.6
+      "base_coverage_pct": 12.8
     },
     "mesh_straight": {
-      "triangles": 42574,
+      "triangles": 28246,
       "directed_edge_dupes": 0,
       "unmatched_edges": 0,
       "closed": true,
-      "volume_cm3": 32.01
+      "volume_cm3": 31.9
     },
     "mesh_print": {
-      "triangles": 42574,
-      "volume_cm3": 32.21,
+      "triangles": 28246,
+      "volume_cm3": 32.1,
       "footprint_mm": [
         177.7,
         164.6
@@ -154,6 +155,7 @@
   },
   "METRO_REAR": {
     "preset": "METRO_REAR",
+    "lug_style": "STEPPED",
     "files": {
       "step": "hunter350_metro_rear.step",
       "stl_straight": "hunter350_metro_rear_straight.stl",
@@ -163,13 +165,13 @@
       "valid": true,
       "solids": 1,
       "shells": 1,
-      "faces": 838
+      "faces": 765
     },
-    "volume_cm3": 37.16,
+    "volume_cm3": 37.01,
     "mass_g": {
-      "PA12": 37.5,
-      "PA6": 42.4,
-      "PA12_SLS": 35.3
+      "PA12": 37.4,
+      "PA6": 42.2,
+      "PA12_SLS": 35.2
     },
     "bbox_straight": [
       -14.6,
@@ -229,23 +231,23 @@
     "lugs": 5,
     "lug_height_above_tyre": 10.5,
     "grip_dots": {
-      "count": 115,
+      "count": 42,
       "base_radius": 1.5,
       "height": 0.55,
-      "pitch": 5.0,
+      "pitch": 8.0,
       "overhang_deg_on_edge": 40.3,
-      "base_coverage_pct": 32.6
+      "base_coverage_pct": 12.8
     },
     "mesh_straight": {
-      "triangles": 53064,
+      "triangles": 34732,
       "directed_edge_dupes": 0,
       "unmatched_edges": 0,
       "closed": true,
-      "volume_cm3": 37.17
+      "volume_cm3": 37.02
     },
     "mesh_print": {
-      "triangles": 53064,
-      "volume_cm3": 37.46,
+      "triangles": 34732,
+      "volume_cm3": 37.32,
       "footprint_mm": [
         177.3,
         165.9
@@ -307,6 +309,7 @@
   },
   "RETRO_FRONT": {
     "preset": "RETRO_FRONT",
+    "lug_style": "STEPPED",
     "files": {
       "step": "hunter350_retro_front.step",
       "stl_straight": "hunter350_retro_front_straight.stl",
@@ -316,13 +319,13 @@
       "valid": true,
       "solids": 1,
       "shells": 1,
-      "faces": 674
+      "faces": 617
     },
-    "volume_cm3": 30.53,
+    "volume_cm3": 30.42,
     "mass_g": {
-      "PA12": 30.8,
-      "PA6": 34.8,
-      "PA12_SLS": 29.0
+      "PA12": 30.7,
+      "PA6": 34.7,
+      "PA12_SLS": 28.9
     },
     "bbox_straight": [
       -14.6,
@@ -382,23 +385,23 @@
     "lugs": 4,
     "lug_height_above_tyre": 9.0,
     "grip_dots": {
-      "count": 90,
+      "count": 33,
       "base_radius": 1.5,
       "height": 0.55,
-      "pitch": 5.0,
+      "pitch": 8.0,
       "overhang_deg_on_edge": 40.3,
-      "base_coverage_pct": 32.6
+      "base_coverage_pct": 12.8
     },
     "mesh_straight": {
-      "triangles": 41640,
+      "triangles": 27340,
       "directed_edge_dupes": 0,
       "unmatched_edges": 0,
       "closed": true,
-      "volume_cm3": 30.53
+      "volume_cm3": 30.42
     },
     "mesh_print": {
-      "triangles": 41640,
-      "volume_cm3": 30.73,
+      "triangles": 27340,
+      "volume_cm3": 30.62,
       "footprint_mm": [
         178.5,
         164.2
@@ -460,6 +463,7 @@
   },
   "RETRO_REAR": {
     "preset": "RETRO_REAR",
+    "lug_style": "STEPPED",
     "files": {
       "step": "hunter350_retro_rear.step",
       "stl_straight": "hunter350_retro_rear_straight.stl",
@@ -469,13 +473,13 @@
       "valid": true,
       "solids": 1,
       "shells": 1,
-      "faces": 754
+      "faces": 681
     },
-    "volume_cm3": 34.5,
+    "volume_cm3": 34.35,
     "mass_g": {
-      "PA12": 34.8,
-      "PA6": 39.3,
-      "PA12_SLS": 32.8
+      "PA12": 34.7,
+      "PA6": 39.2,
+      "PA12_SLS": 32.6
     },
     "bbox_straight": [
       -14.6,
@@ -535,23 +539,23 @@
     "lugs": 5,
     "lug_height_above_tyre": 10.5,
     "grip_dots": {
-      "count": 115,
+      "count": 42,
       "base_radius": 1.5,
       "height": 0.55,
-      "pitch": 5.0,
+      "pitch": 8.0,
       "overhang_deg_on_edge": 40.3,
-      "base_coverage_pct": 32.6
+      "base_coverage_pct": 12.8
     },
     "mesh_straight": {
-      "triangles": 51770,
+      "triangles": 33450,
       "directed_edge_dupes": 0,
       "unmatched_edges": 0,
       "closed": true,
-      "volume_cm3": 34.5
+      "volume_cm3": 34.36
     },
     "mesh_print": {
-      "triangles": 51770,
-      "volume_cm3": 34.79,
+      "triangles": 33450,
+      "volume_cm3": 34.65,
       "footprint_mm": [
         177.3,
         166.0
@@ -613,6 +617,7 @@
   },
   "COUPON": {
     "preset": "COUPON",
+    "lug_style": "STEPPED",
     "files": {
       "step": "hunter350_coupon.step",
       "stl_straight": "hunter350_coupon_straight.stl",
@@ -622,12 +627,12 @@
       "valid": true,
       "solids": 1,
       "shells": 1,
-      "faces": 374
+      "faces": 345
     },
-    "volume_cm3": 18.15,
+    "volume_cm3": 18.1,
     "mass_g": {
       "PA12": 18.3,
-      "PA6": 20.7,
+      "PA6": 20.6,
       "PA12_SLS": 17.2
     },
     "bbox_straight": [
@@ -688,23 +693,23 @@
     "lugs": 2,
     "lug_height_above_tyre": 10.5,
     "grip_dots": {
-      "count": 44,
+      "count": 15,
       "base_radius": 1.5,
       "height": 0.55,
-      "pitch": 5.0,
+      "pitch": 8.0,
       "overhang_deg_on_edge": 40.3,
-      "base_coverage_pct": 32.6
+      "base_coverage_pct": 12.8
     },
     "mesh_straight": {
-      "triangles": 19936,
+      "triangles": 12656,
       "directed_edge_dupes": 0,
       "unmatched_edges": 0,
       "closed": true,
-      "volume_cm3": 18.15
+      "volume_cm3": 18.1
     },
     "mesh_print": {
-      "triangles": 19936,
-      "volume_cm3": 18.15,
+      "triangles": 12656,
+      "volume_cm3": 18.1,
       "footprint_mm": [
         230.0,
         20.3
