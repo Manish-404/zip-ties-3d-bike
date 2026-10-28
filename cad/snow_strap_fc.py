@@ -94,6 +94,9 @@ BASE = dict(
     r_lug_top1=0.8,
     r_lug_step=0.6,
     r_lug_top2=1.0,
+    lug_style="STEPPED",    # "RECT" = same two tiers with square corners, as in the reference strap (preset suffix _RECT)
+    r_rect_base=1.0,        # RECT: small root fillet (strength)
+    r_rect_top=0.3,         # RECT: top and step edges stay almost sharp
     dish_every=1,           # 1 = a dish in every gap, 2 = alternating gaps
     dish_len=8.0,
     dish_w=16.0,
@@ -169,6 +172,10 @@ def section(tyre):
 
 def params(preset="METRO_REAR", **over):
     P = dict(BASE)
+    if preset.endswith("_RECT"):
+        preset = preset[:-5]
+        P["lug_style"] = "RECT"
+        P["dish_depth"] = 0.0    # the oval dish cutter would scoop the flanks of the square lugs
     if preset == "COUPON":
         P.update(COUPON)
     else:
@@ -432,6 +439,12 @@ def side_profile(P, L):
     l1, l2, h1, h2 = P["lug_len1"], P["lug_len2"], P["lug_h1"], P["lug_h2"]
     for i in range(P["n_lugs"]):
         c = b0 + P["lug_pitch"] * (i + 0.5)
+        if P["lug_style"] == "RECT":    # big rectangle with the small rectangle on top, square corners
+            rb, rt = P["r_rect_base"], P["r_rect_top"]
+            seq += [(c - l1 / 2, T, rb), (c - l1 / 2, T + h1, rt), (c - l2 / 2, T + h1, rt),
+                    (c - l2 / 2, T + h1 + h2, rt), (c + l2 / 2, T + h1 + h2, rt),
+                    (c + l2 / 2, T + h1, rt), (c + l1 / 2, T + h1, rt), (c + l1 / 2, T, rb)]
+            continue
         seq += [(c - l1 / 2, T, P["r_lug_base"]), (c - l1 / 2, T + h1, P["r_lug_top1"]),
                 (c - l2 / 2, T + h1, P["r_lug_step"]), (c - l2 / 2, T + h1 + h2, P["r_lug_top2"]),
                 (c + l2 / 2, T + h1 + h2, P["r_lug_top2"]), (c + l2 / 2, T + h1, P["r_lug_step"]),
@@ -855,7 +868,9 @@ def export_preset(preset, outdir, log=print):
     import numpy as np
     P = params(preset)
     shape, L = build_strap(P, log=log)
-    tag = "hunter350_%s" % preset.lower()
+    tag = "hunter350_%s" % P["preset"].lower()
+    if P["lug_style"] == "RECT":
+        tag += "_rect"
     chk = dict(valid=bool(shape.isValid()), solids=len(shape.Solids), shells=len(shape.Shells),
                faces=len(shape.Faces))
     step = os.path.join(outdir, tag + ".step")
@@ -867,7 +882,7 @@ def export_preset(preset, outdir, log=print):
     write_stl(stl, V, T, tag)
     m_straight = mesh_check(T)
     fr = coil_frame(P, L)
-    coiled = preset != "COUPON"
+    coiled = P["preset"] != "COUPON"
     if coiled:
         Vw = coil_warp(V, P, L, fr)
         pstl = os.path.join(outdir, tag + "_PRINT_on_edge_coil.stl")
@@ -883,7 +898,7 @@ def export_preset(preset, outdir, log=print):
     vol = shape.Volume
     bb = shape.optimalBoundingBox()
     info = dict(
-        preset=preset,
+        preset=preset, lug_style=P["lug_style"],
         files=dict(step=os.path.basename(step), stl_straight=os.path.basename(stl),
                    stl_print=os.path.basename(pstl)),
         brep=chk,
