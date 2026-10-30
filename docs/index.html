@@ -104,6 +104,7 @@ footer{padding:36px 0 60px;color:var(--mute);font-size:14px;border-top:1px solid
     <div class="card"><h3>Oval flex dishes</h3><p>Shallow ovals between the cleats, on a thin 2.5 mm band that flexes around the tyre.</p></div>
     <div class="card"><h3>Tyre-side grip dots</h3><p>Raised 3 mm domes on the underside press into the tread rubber from every direction without cutting it.</p></div>
     <div class="card"><h3>Printed on edge</h3><p>Coiled upright on the bed so teeth, pawl and cleats lie in the layer plane, the strongest direction for FDM.</p></div>
+    <div class="card"><h3>Five per print</h3><p>Plate files pack five straps (or six test pieces) onto one 330 × 270 mm bed for Onyx on a Markforged X7.</p></div>
     <div class="card"><h3>Gradual ramps</h3><p>Smooth transitions from cleat band to strap, and a rounded tail, avoid stress concentrations.</p></div>
   </div>
 </div></section>
@@ -145,6 +146,28 @@ footer{padding:36px 0 60px;color:var(--mute);font-size:14px;border-top:1px solid
   <p class="fine">Presets exist for the Hunter 350 Metro and Retro. The other models show the load only; add their tyre to the CAD script to build a strap for them. The friction values, wrap angle (4.5 rad) and weight split are assumptions, so treat the figures as rough, not as safe limits. They are static loads; bumps and hard braking add short peaks.</p>
 </div></section>
 
+<section id="plates"><div class="wrap">
+  <h2>Print five at once: 330 &times; 270 &times; 200 mm bed</h2>
+  <p class="sub">Plate files for a Markforged X7 printing Onyx. Each plate holds five straps of one tyre size, or six test pieces, already on edge and spaced at least 3.8 mm apart.</p>
+  <figure class="wide"><img src="images/plate_metro_rear.png" alt="Five Metro rear straps packed on one print plate" loading="lazy"><figcaption>Five Metro rear straps on one plate: 307 &times; 251 mm, 25.5 mm tall, about 225 g of Onyx.</figcaption></figure>
+  <div class="tw"><table class="data">
+    <thead><tr><th>Plate</th><th>Straps</th><th>Footprint</th><th>Tightest turn</th><th>Core bend strain</th></tr></thead>
+    <tbody>
+      <tr><td>Metro front</td><td>5</td><td>287 &times; 250 mm</td><td>44.0 mm</td><td>2.73 %</td></tr>
+      <tr><td>Metro rear</td><td>5</td><td>307 &times; 251 mm</td><td>43.4 mm</td><td>2.76 %</td></tr>
+      <tr><td>Retro front</td><td>5</td><td>300 &times; 249 mm</td><td>47.1 mm</td><td>2.55 %</td></tr>
+      <tr><td>Retro rear</td><td>5</td><td>299 &times; 250 mm</td><td>44.7 mm</td><td>2.68 %</td></tr>
+      <tr><td>Coupon (test pieces)</td><td>6</td><td>249 &times; 70 mm</td><td>straight</td><td>none</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="pts">
+    <li><strong>How:</strong> the plate coils are wound tighter (53&ndash;55 mm start radius, 43 mm or more at the tightest turn, so the core bends at most 2.8 %, near the 2.7 % the pawl already sees). Each outline is rotated and tucked beside its neighbours.</li>
+    <li><strong>Print it:</strong> import the STL as it is, do not let the slicer re-orient it, use plain Onyx with solid fill, start at 0.1 mm layers, and keep the Onyx dry.</li>
+    <li><strong>Strength:</strong> about 250 N per strap if scaled from PA12 by Onyx's lower tensile strength. That is an estimate, not an FEM run or a load test. With 5&ndash;6 straps per wheel the load per strap stays below it.</li>
+    <li><strong>Check first:</strong> print the coupon plate and pull-test it warm and cold before trusting a set.</li>
+  </ul>
+</div></section>
+
 <section id="filament"><div class="wrap">
   <h2>Best filament for strong traction, cold or warm</h2>
   <p class="sub">For long rides from a freezing winter morning to a hot summer road, use <strong>unfilled PA12 nylon</strong>.</p>
@@ -155,7 +178,8 @@ footer{padding:36px 0 60px;color:var(--mute);font-size:14px;border-top:1px solid
       <tr class="hl"><td>1</td><td><strong>SLS / MJF PA12</strong> from a print service</td><td>The same material with no layer lines or warping. The most consistent result, best if you want several straps that behave alike.</td></tr>
       <tr><td>2</td><td>PA6/66 copolymer nylon</td><td>Easy to print and tough, but absorbs more moisture, so it is softer and weaker when damp.</td></tr>
       <tr><td>3</td><td>PA6 nylon</td><td>Highest strength when bone-dry, but swings the most with humidity. In published tests, conditioned PA6 kept only 56 % of its dry strength, against about 15 % lost for PA12.</td></tr>
-      <tr class="no"><td>Avoid</td><td>Carbon- or glass-filled nylon</td><td>Stiffer, but stretches very little before cracking. The pawl bends 2.7 % every time a tooth clicks past, and the teeth have small root fillets.</td></tr>
+      <tr><td>2</td><td><strong>Onyx</strong> (Markforged, carbon-filled nylon)</td><td>Stiffer than PA12 with lower tensile strength (about 35&ndash;40 MPa), so expect about 250 N per strap instead of 300 N. Unlike carbon-nylon filaments it is reported to stretch far before breaking, which should cope with the 2.7 % pawl strain. It is a nylon, so keep it dry. Not tested here: pull-test the coupon first. See the print plates above.</td></tr>
+      <tr class="no"><td>Avoid</td><td>Carbon- or glass-filled nylon filament</td><td>Stiffer, but stretches very little before cracking. The pawl bends 2.7 % every time a tooth clicks past, and the teeth have small root fillets.</td></tr>
       <tr class="no"><td>Avoid</td><td>PLA, PETG, ABS, PC</td><td>PLA and PETG crack in the cold, and PLA softens in a hot car or garage. ABS and PC are brittle at notches.</td></tr>
       <tr class="no"><td>Avoid</td><td>TPU</td><td>Too soft to hold the lock.</td></tr>
     </tbody>
@@ -180,9 +204,10 @@ footer{padding:36px 0 60px;color:var(--mute);font-size:14px;border-top:1px solid
     <tr><th>Cleats</th><td>Stepped (6 × 5 mm, then 3 × 3 mm), 10.5 mm above the tyre (front 9 mm), 2 mm base fillets</td></tr>
     <tr><th>Ratchet teeth</th><td>2.5 mm pitch, 1.2 mm tall, 45° ramp, 90° stop face, 0.4 mm root fillets</td></tr>
     <tr><th>Head</th><td>19.7 mm tall, 3.6 mm floor, two-tooth wedge pawl propped by the strap under load, 0.5 mm clearances</td></tr>
-    <tr><th>Printing</th><td>On edge as an upright coil, about 178 × 166 mm, 25.5 mm tall</td></tr>
+    <tr><th>Printing</th><td>On edge as an upright coil, about 178 × 166 mm, 25.5 mm tall; or five per plate on a 330 × 270 mm bed (Markforged X7, Onyx)</td></tr>
     <tr><th>Rated strap tension</th><td>About 300 N in PA12, from a CalculiX FEM check (not a load test)</td></tr>
-    <tr><th>Best material</th><td>Unfilled PA12 nylon, dried (FDM), or SLS/MJF PA12. See the filament section above.</td></tr>
+    <tr><th>Best material</th><td>Unfilled PA12 nylon, dried (FDM), or SLS/MJF PA12. Onyx on a Markforged X7 is the other option (about 250 N, untested). See the filament section above.</td></tr>
+    <tr><th>Print plates</th><td><a href="https://github.com/Manish-404/zip-ties-3d-bike/tree/main/out/plates">out/plates</a> (round lugs) · <a href="https://github.com/Manish-404/zip-ties-3d-bike/tree/main/out/rect/plates">out/rect/plates</a> (square lugs)</td></tr>
     <tr><th>Files</th><td><a href="models/hunter350_rear_straight.stl">Metro rear STL</a> · <a href="models/hunter350_front_straight.stl">Metro front STL</a> · <a href="models/hunter350_rear_loop.stl">Metro rear installed pose</a></td></tr>
     <tr><th>Loads by model</th><td><a href="https://github.com/Manish-404/zip-ties-3d-bike#pressure-and-torque-by-royal-enfield-model">Tooth pressure and wheel torque for the 350, 450 and 650 Royal Enfields</a></td></tr>
     <tr><th>Guide</th><td><a href="https://github.com/Manish-404/zip-ties-3d-bike/blob/main/FITTING.md">Printing, fitting and riding guide</a></td></tr>
