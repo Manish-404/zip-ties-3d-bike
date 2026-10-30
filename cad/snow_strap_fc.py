@@ -147,7 +147,15 @@ PRESETS = list(TYRES) + ["COUPON"]
 COUPON = dict(total_len=230.0, n_lugs=2, band_start=30.0, lug_h2=3.0)
 
 INT_PARAMS = {"pawl_teeth", "n_lugs", "dish_every", "rib_n"}
-DENSITY = {"PA12": 1.01, "PA6": 1.14, "PA12_SLS": 0.95}  # g/cm3
+DENSITY = {"PA12": 1.01, "PA6": 1.14, "PA12_SLS": 0.95, "ONYX": 1.2}  # g/cm3
+
+# Multi-strap print plates for a 330 x 270 x 200 mm bed (Markforged X7). The plate coil is wound
+# tighter than the single print file (coil_rho0 = 80, for 180 mm beds) so more coils fit. The
+# smallest turn radius stays >= 43 mm, i.e. core bending strain <= 2.8 % (the pawl click design
+# value is 2.7 %). Chosen by packing sweeps: one more coil per plate costs about 2 mm of radius.
+PLATE_BED = (330.0, 270.0, 200.0)
+PLATE_RHO0 = {"METRO_FRONT": 53.0, "METRO_REAR": 54.0, "RETRO_FRONT": 55.0, "RETRO_REAR": 54.0}
+PLATE_COUPONS = 6       # test pieces per plate
 
 
 def section(tyre):
@@ -895,6 +903,9 @@ def export_preset(preset, outdir, log=print):
     lo, hi = Vw.min(axis=0), Vw.max(axis=0)
     Vw = Vw - [(lo[0] + hi[0]) / 2.0, (lo[1] + hi[1]) / 2.0, lo[2]]
     write_stl(pstl, Vw, T, tag + "_print")
+    plate = None
+    if os.environ.get("STRAP_PLATES", "1") == "1":
+        plate = export_plate(P, L, V, T, outdir, tag, log)
     vol = shape.Volume
     bb = shape.optimalBoundingBox()
     info = dict(
@@ -926,6 +937,7 @@ def export_preset(preset, outdir, log=print):
                        base_coverage_pct=round(100 * math.pi * P["dot_r"] ** 2
                                                / (math.sqrt(3.0) / 2.0 * P["dot_pitch"] ** 2), 1)),
         mesh_straight=dict(triangles=int(len(T)), **m_straight, volume_cm3=round(volume_of(V, T) / 1000, 2)),
+        plate=plate,
         mesh_print=dict(triangles=int(len(T)), volume_cm3=round(volume_of(Vw, T) / 1000, 2),
                         footprint_mm=[round(float(hi[0] - lo[0]), 1), round(float(hi[1] - lo[1]), 1)],
                         height_mm=round(float(hi[2] - lo[2]), 2),
@@ -939,6 +951,59 @@ def export_preset(preset, outdir, log=print):
         preset, chk["valid"], chk["solids"], vol / 1000, bb.XLength, L["n_teeth"],
         info["mesh_print"]["min_gap_between_turns_mm"], info["mesh_print"]["footprint_mm"]))
     return shape, info
+
+
+def export_plate(P, L, V, T, outdir, tag, log=print):
+    """Pack as many straps as fit on the plate (PLATE_BED) and write one STL with all of them.
+    Coils use PLATE_RHO0; the coupon is straight, on edge. Returns the info dict."""
+    import numpy as np
+    here = os.path.dirname(os.path.abspath(__file__))
+    if here not in sys.path:
+        sys.path.insert(0, here)
+    import plate_layout as pl
+    base = P["preset"]
+    if base == "COUPON":
+        Vp, rho0, rho_min, gap = on_edge(V, P), None, None, None
+        n_max = PLATE_COUPONS
+    else:
+        rho0 = PLATE_RHO0[base]
+        P2 = dict(P, coil_rho0=rho0)
+        fr = coil_frame(P2, L)
+        Vp = coil_warp(V, P2, L, fr)
+        gap = turn_gap(Vp, V[:, 0])
+        phi_end = float(np.interp(L["L_s"], fr["s"], fr["phi"]))
+        rho_min = rho0 - fr["k"] * phi_end
+        n_max = 12
+    Vp = Vp - [0.0, 0.0, Vp[:, 2].min()]
+    Vm, Tm, placed, skipped = pl.build_plate([(Vp, T)] * n_max, bed=PLATE_BED)
+    if Vm is None:
+        return None
+    hi, lo = Vm.max(axis=0), Vm.min(axis=0)
+    assert lo[0] >= pl.MARGIN - 0.5 and lo[1] >= pl.MARGIN - 0.5
+    assert hi[0] <= PLATE_BED[0] - pl.MARGIN + 0.5 and hi[1] <= PLATE_BED[1] - pl.MARGIN + 0.5
+    pdir = os.path.join(outdir, "plates")
+    os.makedirs(pdir, exist_ok=True)
+    name = "%s_PLATE_%dup.stl" % (tag, len(placed))
+    write_stl(os.path.join(pdir, name), Vm, Tm, tag + "_plate")
+    vol = volume_of(Vp, T) / 1000.0
+    cg = pl.min_gap(Vm, Tm, placed, [(Vp, T)] * n_max)
+    info = dict(
+        file="plates/" + name, count=len(placed), bed_mm=list(PLATE_BED), margin_mm=pl.MARGIN,
+        clearance_target_mm=pl.CLEAR,
+        coil_rho0=rho0, coil_rho_min=None if rho_min is None else round(rho_min, 1),
+        core_bend_strain_pct=None if rho_min is None else round(100.0 * (P["T_core"] / 2.0) / rho_min, 2),
+        min_gap_turns_mm=None if gap is None else round(gap, 2),
+        min_gap_between_straps_mm=None if cg is None else round(cg, 2),
+        extent_mm=[round(float(hi[0] - lo[0]), 1), round(float(hi[1] - lo[1]), 1)],
+        height_mm=round(float(hi[2] - lo[2]), 2),
+        rotations_deg=[int(round(math.degrees(p["rot"]))) for p in placed],
+        mass_g_onyx=round(len(placed) * vol * DENSITY["ONYX"], 0),
+        mesh=dict(triangles=int(len(Tm)), **mesh_check(Tm)),
+    )
+    log("[%s] plate: %d straps, extent %s, height %.1f, strap gap %s, turn gap %s, rho_min %s" % (
+        tag, info["count"], info["extent_mm"], info["height_mm"], info["min_gap_between_straps_mm"],
+        info["min_gap_turns_mm"], info["coil_rho_min"]))
+    return info
 
 
 def head_section(P, s_max=25.0):
@@ -961,10 +1026,11 @@ def main_headless():
     outdir = os.environ.get("STRAP_OUT") or os.path.join(os.path.dirname(here), "out")
     os.makedirs(outdir, exist_ok=True)
     presets = os.environ.get("STRAP_PRESETS", ",".join(PRESETS)).split(",")
-    infos = {}
+    info_path = os.path.join(outdir, "info.json")
+    infos = json.load(open(info_path)) if os.path.exists(info_path) else {}   # a partial build keeps the rest
     for pr in presets:
         _, infos[pr.strip()] = export_preset(pr.strip(), outdir)
-    with open(os.path.join(outdir, "info.json"), "w") as f:
+    with open(info_path, "w") as f:
         json.dump(infos, f, indent=2)
     with open(os.path.join(outdir, "head_section.json"), "w") as f:
         json.dump(head_section(params("COUPON")), f)
