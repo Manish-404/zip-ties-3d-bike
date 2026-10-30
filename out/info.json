@@ -17,7 +17,8 @@
     "mass_g": {
       "PA12": 32.2,
       "PA6": 36.4,
-      "PA12_SLS": 30.3
+      "PA12_SLS": 30.3,
+      "ONYX": 38.3
     },
     "bbox_straight": [
       -14.6,
@@ -90,6 +91,41 @@
       "unmatched_edges": 0,
       "closed": true,
       "volume_cm3": 31.9
+    },
+    "plate": {
+      "file": "plates/hunter350_metro_front_PLATE_5up.stl",
+      "count": 5,
+      "bed_mm": [
+        330.0,
+        270.0,
+        200.0
+      ],
+      "margin_mm": 5.0,
+      "clearance_target_mm": 4.0,
+      "coil_rho0": 53.0,
+      "coil_rho_min": 44.0,
+      "core_bend_strain_pct": 2.73,
+      "min_gap_turns_mm": 2.0,
+      "min_gap_between_straps_mm": 4.03,
+      "extent_mm": [
+        287.1,
+        249.9
+      ],
+      "height_mm": 25.5,
+      "rotations_deg": [
+        135,
+        315,
+        315,
+        165,
+        90
+      ],
+      "mass_g_onyx": 193.0,
+      "mesh": {
+        "triangles": 141230,
+        "directed_edge_dupes": 0,
+        "unmatched_edges": 0,
+        "closed": true
+      }
     },
     "mesh_print": {
       "triangles": 28246,
@@ -171,7 +207,8 @@
     "mass_g": {
       "PA12": 37.4,
       "PA6": 42.2,
-      "PA12_SLS": 35.2
+      "PA12_SLS": 35.2,
+      "ONYX": 44.4
     },
     "bbox_straight": [
       -14.6,
@@ -244,6 +281,41 @@
       "unmatched_edges": 0,
       "closed": true,
       "volume_cm3": 37.02
+    },
+    "plate": {
+      "file": "plates/hunter350_metro_rear_PLATE_5up.stl",
+      "count": 5,
+      "bed_mm": [
+        330.0,
+        270.0,
+        200.0
+      ],
+      "margin_mm": 5.0,
+      "clearance_target_mm": 4.0,
+      "coil_rho0": 54.0,
+      "coil_rho_min": 43.4,
+      "core_bend_strain_pct": 2.76,
+      "min_gap_turns_mm": 2.0,
+      "min_gap_between_straps_mm": 3.86,
+      "extent_mm": [
+        307.0,
+        250.5
+      ],
+      "height_mm": 25.5,
+      "rotations_deg": [
+        120,
+        165,
+        315,
+        285,
+        90
+      ],
+      "mass_g_onyx": 225.0,
+      "mesh": {
+        "triangles": 173660,
+        "directed_edge_dupes": 0,
+        "unmatched_edges": 0,
+        "closed": true
+      }
     },
     "mesh_print": {
       "triangles": 34732,
@@ -325,7 +397,8 @@
     "mass_g": {
       "PA12": 30.7,
       "PA6": 34.7,
-      "PA12_SLS": 28.9
+      "PA12_SLS": 28.9,
+      "ONYX": 36.5
     },
     "bbox_straight": [
       -14.6,
@@ -398,6 +471,41 @@
       "unmatched_edges": 0,
       "closed": true,
       "volume_cm3": 30.42
+    },
+    "plate": {
+      "file": "plates/hunter350_retro_front_PLATE_5up.stl",
+      "count": 5,
+      "bed_mm": [
+        330.0,
+        270.0,
+        200.0
+      ],
+      "margin_mm": 5.0,
+      "clearance_target_mm": 4.0,
+      "coil_rho0": 55.0,
+      "coil_rho_min": 47.1,
+      "core_bend_strain_pct": 2.55,
+      "min_gap_turns_mm": 2.0,
+      "min_gap_between_straps_mm": 4.01,
+      "extent_mm": [
+        299.8,
+        249.0
+      ],
+      "height_mm": 25.5,
+      "rotations_deg": [
+        135,
+        315,
+        315,
+        180,
+        90
+      ],
+      "mass_g_onyx": 184.0,
+      "mesh": {
+        "triangles": 136700,
+        "directed_edge_dupes": 0,
+        "unmatched_edges": 0,
+        "closed": true
+      }
     },
     "mesh_print": {
       "triangles": 27340,
@@ -479,7 +587,8 @@
     "mass_g": {
       "PA12": 34.7,
       "PA6": 39.2,
-      "PA12_SLS": 32.6
+      "PA12_SLS": 32.6,
+      "ONYX": 41.2
     },
     "bbox_straight": [
       -14.6,
@@ -552,6 +661,41 @@
       "unmatched_edges": 0,
       "closed": true,
       "volume_cm3": 34.36
+    },
+    "plate": {
+      "file": "plates/hunter350_retro_rear_PLATE_5up.stl",
+      "count": 5,
+      "bed_mm": [
+        330.0,
+        270.0,
+        200.0
+      ],
+      "margin_mm": 5.0,
+      "clearance_target_mm": 4.0,
+      "coil_rho0": 54.0,
+      "coil_rho_min": 44.7,
+      "core_bend_strain_pct": 2.68,
+      "min_gap_turns_mm": 2.0,
+      "min_gap_between_straps_mm": 3.77,
+      "extent_mm": [
+        299.4,
+        249.6
+      ],
+      "height_mm": 25.5,
+      "rotations_deg": [
+        135,
+        315,
+        315,
+        180,
+        90
+      ],
+      "mass_g_onyx": 209.0,
+      "mesh": {
+        "triangles": 167250,
+        "directed_edge_dupes": 0,
+        "unmatched_edges": 0,
+        "closed": true
+      }
     },
     "mesh_print": {
       "triangles": 33450,
@@ -633,7 +777,8 @@
     "mass_g": {
       "PA12": 18.3,
       "PA6": 20.6,
-      "PA12_SLS": 17.2
+      "PA12_SLS": 17.2,
+      "ONYX": 21.7
     },
     "bbox_straight": [
       -14.6,
@@ -706,6 +851,42 @@
       "unmatched_edges": 0,
       "closed": true,
       "volume_cm3": 18.1
+    },
+    "plate": {
+      "file": "plates/hunter350_coupon_PLATE_6up.stl",
+      "count": 6,
+      "bed_mm": [
+        330.0,
+        270.0,
+        200.0
+      ],
+      "margin_mm": 5.0,
+      "clearance_target_mm": 4.0,
+      "coil_rho0": null,
+      "coil_rho_min": null,
+      "core_bend_strain_pct": null,
+      "min_gap_turns_mm": null,
+      "min_gap_between_straps_mm": 5.05,
+      "extent_mm": [
+        249.0,
+        70.3
+      ],
+      "height_mm": 25.5,
+      "rotations_deg": [
+        0,
+        180,
+        0,
+        180,
+        0,
+        180
+      ],
+      "mass_g_onyx": 130.0,
+      "mesh": {
+        "triangles": 75936,
+        "directed_edge_dupes": 0,
+        "unmatched_edges": 0,
+        "closed": true
+      }
     },
     "mesh_print": {
       "triangles": 12656,
