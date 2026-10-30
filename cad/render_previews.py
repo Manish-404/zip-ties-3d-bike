@@ -107,6 +107,28 @@ def preview(out, img_dir, key, info):
     return name
 
 
+def plate_preview(out, img_dir, key, info):
+    """Top view of the multi-strap print plate inside the 330 x 270 mm bed."""
+    pl = info["plate"]
+    tris = read_stl(os.path.join(out, pl["file"]))
+    bx, by = pl["bed_mm"][0], pl["bed_mm"][1]
+    fig, ax = plt.subplots(figsize=(10.5, 8.7))
+    ax.add_patch(plt.Rectangle((0, 0), bx, by, fc="0.97", ec="0.25", lw=1.5))
+    ax.add_collection(PolyCollection(tris[:, :, :2], facecolors=(1.0, 0.5, 0.15), edgecolors="none"))
+    ax.set_xlim(-8, bx + 8)
+    ax.set_ylim(-8, by + 8)
+    ax.set_aspect("equal")
+    ax.grid(alpha=0.25)
+    ax.set_title("%s: %d straps on one %.0f x %.0f mm plate, %.1f mm tall, %.0f g in Onyx" % (
+        key, pl["count"], bx, by, pl["height_mm"], pl["mass_g_onyx"]), fontsize=12)
+    ax.set_xlabel("mm")
+    fig.tight_layout()
+    name = "plate_%s.png" % key.lower()
+    fig.savefig(os.path.join(img_dir, name), dpi=80)
+    plt.close(fig)
+    return name
+
+
 def section_path(sm):
     """Strap path around the section model, starting at the head-side rim corner.
     u = across the wheel (+ = head side), v = radial from the bead seat."""
@@ -332,6 +354,8 @@ def main(out, img_dir):
     for key, info in infos.items():
         if info["mesh_print"]["coiled"]:
             print("wrote", preview(out, img_dir, key, info))
+        if info.get("plate"):
+            print("wrote", plate_preview(out, img_dir, key, info))
     hs_path = os.path.join(out, "head_section.json")
     if os.path.exists(hs_path):
         print("wrote", lock_section(img_dir, json.load(open(hs_path))))
