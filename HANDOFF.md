@@ -535,3 +535,16 @@ To refresh the project page:
 - copy `out/hunter350_metro_rear_installed_pose.stl` to `docs/models/hunter350_rear_loop.stl`, and the Metro straight STLs over the rear and front straight models;
 - serve `docs/` and capture `index.html?render&m=loop` with `setAngle()` in headless Chrome (144 frames, 1048 × 720);
 - encode with `ffmpeg -framerate 24 … -c:v libx264 -pix_fmt yuv420p`.
+
+### 8.9 Print plates and Onyx (28–31 October 2026)
+
+> Request: "The build volume of my printer is 330*270*200mm make the design such that i can print multiply zip ties at once as im gonna print it in onyx filament carbon infused nylon filament also update the git repo and the readme with the webpage later"
+
+That build volume is a Markforged X7 (Onyx). Changes:
+- **`_RECT` lug variant** (28 October): same two tiers with 0.3 mm corners, oval dishes off (the dish cutter scooped the lug flanks). `_RECT` preset suffix, outputs in `out/rect/`.
+- **Dots at 8 mm pitch** (was 5 mm), from the rear tyre's tread: grooves repeat about every 37–44 mm and are 6–7 mm wide.
+- **`cad/plate_layout.py`**: rasterises each coil's plan outline at 1 mm, grows it by 2 mm, and packs by FFT cross-correlation over 24 rotations (bottom-left, left-bottom and 6 random orders; best count wins). 5 mm plate margin, 4 mm target clearance. Coils may sit inside each other's hollow, and heads tuck between turns.
+- **Plate coil radius** `PLATE_RHO0` in `snow_strap_fc.py`: METRO_FRONT 53, METRO_REAR 54, RETRO_FRONT 55, RETRO_REAR 54 mm. Packing sweeps showed every 2 mm of radius is worth about one coil, and the limit was the smallest turn radius, kept at 43 mm or more (core bend strain 1.2 / rho <= 2.8 %). Result: 5 straps per plate for every tyre, 6 coupons straight and interleaved. The single coil (`coil_rho0` = 80) is unchanged for 180 mm beds.
+- **Checks:** every plate STL is a closed mesh with one shell per strap, z from 0 to 25.5 mm, at least 3.76 mm between straps (surface vertices) and inside the 330 × 270 bed with 9 mm margin. Turn gaps within each coil are at least 2.0 mm.
+- **Onyx** (`ONYX` 1.2 g/cm3 in `DENSITY`): tensile strength about 35–40 MPa, modulus 1.4–2.4 GPa depending on datasheet version, HDT 145 °C, density 1.2. The rating scaled from PA12 is about 250 N; this is arithmetic, not an FEM run. Not verified: Onyx's pawl and tooth behaviour at 2.7 % strain, cold toughness, creep, moisture effect, the Eiger slicer's treatment of the plate. The earlier "no carbon-filled nylon" rule (§8.6) still applies to filaments; Onyx is the stated exception, pending the coupon test.
+- `main_headless` now merges into an existing `info.json`, so building one preset keeps the others. `STRAP_PLATES=0` skips the plates.
