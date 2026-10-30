@@ -34,7 +34,7 @@ If your tyre or loop is different, open `cad/snow_strap_fc.py` in FreeCAD, add y
 
 **Material.** Use unfilled PA12 nylon. It stays tough below −10 °C, takes up little moisture, and keeps its shape in summer heat.
 - PA6/66 copolymer is a second choice, and PA6 a third: both soften and weaken when damp.
-- Do not use carbon- or glass-filled nylon. It is too brittle for the pawl, which bends about 2.7 % every time it clicks.
+- Do not use carbon- or glass-filled nylon filament. It is too brittle for the pawl, which bends about 2.7 % every time it clicks. The exception is Markforged Onyx (see "Printing several at once" below), which is reported to stretch much further before breaking.
 - Do not use PLA, PETG, ABS or PC. They crack in the cold, and PLA softens when warm.
 - Do not use TPU. It is too soft to hold the lock.
 - Pick a PA12 whose datasheet gives an elongation at break of 20 % or more.
@@ -45,7 +45,17 @@ If your tyre or loop is different, open `cad/snow_strap_fc.py` in FreeCAD, add y
 
 **Orientation.** The files are already laid out on edge, as an upright coil. Do not rotate them. Printed this way, the teeth, the pawl and the strap tension all lie in the layer plane, which is the strongest direction for FDM.
 
-**Bed.** The coils are about 178 × 166 mm and 25.5 mm tall, so they just fit a 180 × 180 mm bed with no brim. With a brim you need a bed of at least 200 mm. The test piece is 230 mm long and goes diagonally on a 180 mm bed.
+**Bed.** One coil is about 178 × 166 mm and 25.5 mm tall, so it just fits a 180 × 180 mm bed with no brim. With a brim you need a bed of at least 200 mm. The test piece is 230 mm long and goes diagonally on a 180 mm bed.
+
+**Printing several at once (330 × 270 × 200 mm bed, Markforged X7, Onyx).** Use the plate files in `out/plates/` (square-lug versions in `out/rect/plates/`).
+- `hunter350_<preset>_PLATE_5up.stl` holds five straps; `hunter350_coupon_PLATE_6up.stl` holds six test pieces. They are already placed on edge, at least 3.8 mm apart and 9 mm from the plate edge, 25.5 mm tall.
+- To fill a wheel (5–6 straps), print one plate and keep the spare, or two plates for both wheels.
+- The plate coils are wound tighter (radius 53–55 mm at the start, 43–47 mm at the tightest turn) than the single coil, so the core bends up to 2.8 % instead of about 1.6 %. That is near the pawl's 2.7 % click strain. Onyx should cope, but it is untested: the coupon plate is the check.
+- Import the STL as it is. Do not let Eiger rotate or lay the parts flat.
+- Use plain Onyx with solid fill, so the 2.4 mm core and the teeth are all walls and solid layers. Start at 0.1 mm layers.
+- Keep the Onyx dry before and after printing. It is a nylon and softens when damp.
+- Rating: scaling the 300 N PA12 rating by Onyx's lower tensile strength (about 35–40 MPa against 45 MPa) gives roughly 250 N per strap. That is a scaled estimate, not an FEM run or a load test. With 5–6 straps per wheel, two straps share the pull and every model stays at or below about 66 % of that.
+- Regenerate or change the layout with `cad/snow_strap_fc.py` (see `PLATE_BED` and `PLATE_RHO0`) and `cad/plate_layout.py`.
 
 **Settings.** These are a starting point for a 0.4 mm nozzle:
 - 0.15–0.2 mm layers;
@@ -59,7 +69,7 @@ If your tyre or loop is different, open `cad/snow_strap_fc.py` in FreeCAD, add y
 - Check that the pawl moves: press it back with a fingernail through the open side of the head.
 - Clear any strings from the slot.
 
-**Test the lock first.** Print two test pieces and push one's tail into the other's head from the underside, teeth toward the pawl.
+**Test the lock first.** Print two test pieces (or the coupon plate, six at once) and push one's tail into the other's head from the underside, teeth toward the pawl.
 1. It should click tooth by tooth and must not pull back out.
 2. Hang a load from the pair, or pull with a luggage scale. Aim for 30 kg (about 300 N) without slipping.
 3. Repeat after 2 h in a freezer.
