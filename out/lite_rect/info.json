@@ -12,21 +12,21 @@
       "valid": true,
       "solids": 1,
       "shells": 1,
-      "faces": 692
+      "faces": 689
     },
-    "volume_cm3": 29.98,
+    "volume_cm3": 30.06,
     "mass_g": {
-      "PA12": 30.3,
-      "PA6": 34.2,
-      "PA12_SLS": 28.5,
-      "ONYX": 36.0
+      "PA12": 30.4,
+      "PA6": 34.3,
+      "PA12_SLS": 28.6,
+      "ONYX": 36.1
     },
     "bbox_straight": [
       -14.6,
       510.4,
       -11.0,
       14.5,
-      -0.55,
+      -0.74,
       19.7
     ],
     "length_total": 525.0,
@@ -79,19 +79,19 @@
     "lugs": 4,
     "lug_height_above_tyre": 9.0,
     "grip_dots": {
-      "count": 33,
-      "base_radius": 1.5,
-      "height": 0.55,
-      "pitch": 8.0,
-      "overhang_deg_on_edge": 40.3,
-      "base_coverage_pct": 12.8
+      "count": 30,
+      "base_radius": 2.0,
+      "height": 0.74,
+      "pitch": 9.2,
+      "overhang_deg_on_edge": 40.6,
+      "base_coverage_pct": 17.1
     },
     "mesh_straight": {
-      "triangles": 20330,
+      "triangles": 20500,
       "directed_edge_dupes": 0,
       "unmatched_edges": 0,
       "closed": true,
-      "volume_cm3": 29.98
+      "volume_cm3": 30.06
     },
     "plate": {
       "file": "plates/hunter350_metro_front_rect_lite_PLATE_5up.stl",
@@ -122,15 +122,15 @@
       ],
       "mass_g_onyx": 182.0,
       "mesh": {
-        "triangles": 101650,
+        "triangles": 102500,
         "directed_edge_dupes": 0,
         "unmatched_edges": 0,
         "closed": true
       }
     },
     "mesh_print": {
-      "triangles": 20330,
-      "volume_cm3": 30.16,
+      "triangles": 20500,
+      "volume_cm3": 30.23,
       "footprint_mm": [
         177.7,
         164.6
@@ -203,21 +203,21 @@
       "valid": true,
       "solids": 1,
       "shells": 1,
-      "faces": 779
+      "faces": 773
     },
-    "volume_cm3": 34.45,
+    "volume_cm3": 34.54,
     "mass_g": {
-      "PA12": 34.8,
-      "PA6": 39.3,
-      "PA12_SLS": 32.7,
-      "ONYX": 41.3
+      "PA12": 34.9,
+      "PA6": 39.4,
+      "PA12_SLS": 32.8,
+      "ONYX": 41.4
     },
     "bbox_straight": [
       -14.6,
       600.4,
       -11.0,
       14.5,
-      -0.55,
+      -0.74,
       19.7
     ],
     "length_total": 615.0,
@@ -270,19 +270,19 @@
     "lugs": 5,
     "lug_height_above_tyre": 10.5,
     "grip_dots": {
-      "count": 42,
-      "base_radius": 1.5,
-      "height": 0.55,
-      "pitch": 8.0,
-      "overhang_deg_on_edge": 40.3,
-      "base_coverage_pct": 12.8
+      "count": 36,
+      "base_radius": 2.0,
+      "height": 0.74,
+      "pitch": 9.2,
+      "overhang_deg_on_edge": 40.6,
+      "base_coverage_pct": 17.1
     },
     "mesh_straight": {
-      "triangles": 24188,
+      "triangles": 23780,
       "directed_edge_dupes": 0,
       "unmatched_edges": 0,
       "closed": true,
-      "volume_cm3": 34.45
+      "volume_cm3": 34.53
     },
     "plate": {
       "file": "plates/hunter350_metro_rear_rect_lite_PLATE_5up.stl",
@@ -311,17 +311,17 @@
         285,
         90
       ],
-      "mass_g_onyx": 209.0,
+      "mass_g_onyx": 210.0,
       "mesh": {
-        "triangles": 120940,
+        "triangles": 118900,
         "directed_edge_dupes": 0,
         "unmatched_edges": 0,
         "closed": true
       }
     },
     "mesh_print": {
-      "triangles": 24188,
-      "volume_cm3": 34.72,
+      "triangles": 23780,
+      "volume_cm3": 34.81,
       "footprint_mm": [
         177.3,
         165.9
@@ -394,21 +394,21 @@
       "valid": true,
       "solids": 1,
       "shells": 1,
-      "faces": 632
+      "faces": 629
     },
-    "volume_cm3": 28.61,
+    "volume_cm3": 28.69,
     "mass_g": {
-      "PA12": 28.9,
-      "PA6": 32.6,
-      "PA12_SLS": 27.2,
-      "ONYX": 34.3
+      "PA12": 29.0,
+      "PA6": 32.7,
+      "PA12_SLS": 27.3,
+      "ONYX": 34.4
     },
     "bbox_straight": [
       -14.6,
       475.4,
       -11.0,
       14.5,
-      -0.55,
+      -0.74,
       19.7
     ],
     "length_total": 490.0,
@@ -461,19 +461,19 @@
     "lugs": 4,
     "lug_height_above_tyre": 9.0,
     "grip_dots": {
-      "count": 33,
-      "base_radius": 1.5,
-      "height": 0.55,
-      "pitch": 8.0,
-      "overhang_deg_on_edge": 40.3,
-      "base_coverage_pct": 12.8
+      "count": 30,
+      "base_radius": 2.0,
+      "height": 0.74,
+      "pitch": 9.2,
+      "overhang_deg_on_edge": 40.6,
+      "base_coverage_pct": 17.1
     },
     "mesh_straight": {
-      "triangles": 19446,
+      "triangles": 19618,
       "directed_edge_dupes": 0,
       "unmatched_edges": 0,
       "closed": true,
-      "volume_cm3": 28.61
+      "volume_cm3": 28.69
     },
     "plate": {
       "file": "plates/hunter350_retro_front_rect_lite_PLATE_5up.stl",
@@ -502,17 +502,17 @@
         180,
         90
       ],
-      "mass_g_onyx": 173.0,
+      "mass_g_onyx": 174.0,
       "mesh": {
-        "triangles": 97230,
+        "triangles": 98090,
         "directed_edge_dupes": 0,
         "unmatched_edges": 0,
         "closed": true
       }
     },
     "mesh_print": {
-      "triangles": 19446,
-      "volume_cm3": 28.78,
+      "triangles": 19618,
+      "volume_cm3": 28.86,
       "footprint_mm": [
         178.5,
         164.3
@@ -585,21 +585,21 @@
       "valid": true,
       "solids": 1,
       "shells": 1,
-      "faces": 695
+      "faces": 689
     },
-    "volume_cm3": 32.13,
+    "volume_cm3": 32.22,
     "mass_g": {
-      "PA12": 32.4,
-      "PA6": 36.6,
-      "PA12_SLS": 30.5,
-      "ONYX": 38.6
+      "PA12": 32.5,
+      "PA6": 36.7,
+      "PA12_SLS": 30.6,
+      "ONYX": 38.7
     },
     "bbox_straight": [
       -14.6,
       535.4,
       -11.0,
       14.5,
-      -0.55,
+      -0.74,
       19.7
     ],
     "length_total": 550.0,
@@ -652,19 +652,19 @@
     "lugs": 5,
     "lug_height_above_tyre": 10.5,
     "grip_dots": {
-      "count": 42,
-      "base_radius": 1.5,
-      "height": 0.55,
-      "pitch": 8.0,
-      "overhang_deg_on_edge": 40.3,
-      "base_coverage_pct": 12.8
+      "count": 36,
+      "base_radius": 2.0,
+      "height": 0.74,
+      "pitch": 9.2,
+      "overhang_deg_on_edge": 40.6,
+      "base_coverage_pct": 17.1
     },
     "mesh_straight": {
-      "triangles": 22866,
+      "triangles": 22470,
       "directed_edge_dupes": 0,
       "unmatched_edges": 0,
       "closed": true,
-      "volume_cm3": 32.13
+      "volume_cm3": 32.21
     },
     "plate": {
       "file": "plates/hunter350_retro_rear_rect_lite_PLATE_5up.stl",
@@ -693,17 +693,17 @@
         315,
         210
       ],
-      "mass_g_onyx": 195.0,
+      "mass_g_onyx": 196.0,
       "mesh": {
-        "triangles": 114330,
+        "triangles": 112350,
         "directed_edge_dupes": 0,
         "unmatched_edges": 0,
         "closed": true
       }
     },
     "mesh_print": {
-      "triangles": 22866,
-      "volume_cm3": 32.39,
+      "triangles": 22470,
+      "volume_cm3": 32.47,
       "footprint_mm": [
         177.3,
         166.1
@@ -778,11 +778,11 @@
       "shells": 1,
       "faces": 352
     },
-    "volume_cm3": 17.73,
+    "volume_cm3": 17.78,
     "mass_g": {
-      "PA12": 17.9,
-      "PA6": 20.2,
-      "PA12_SLS": 16.8,
+      "PA12": 18.0,
+      "PA6": 20.3,
+      "PA12_SLS": 16.9,
       "ONYX": 21.3
     },
     "bbox_straight": [
@@ -790,7 +790,7 @@
       215.4,
       -11.0,
       14.5,
-      -0.55,
+      -0.74,
       19.7
     ],
     "length_total": 230.0,
@@ -844,18 +844,18 @@
     "lug_height_above_tyre": 10.5,
     "grip_dots": {
       "count": 15,
-      "base_radius": 1.5,
-      "height": 0.55,
-      "pitch": 8.0,
-      "overhang_deg_on_edge": 40.3,
-      "base_coverage_pct": 12.8
+      "base_radius": 2.0,
+      "height": 0.74,
+      "pitch": 9.2,
+      "overhang_deg_on_edge": 40.6,
+      "base_coverage_pct": 17.1
     },
     "mesh_straight": {
-      "triangles": 10108,
+      "triangles": 10570,
       "directed_edge_dupes": 0,
       "unmatched_edges": 0,
       "closed": true,
-      "volume_cm3": 17.73
+      "volume_cm3": 17.77
     },
     "plate": {
       "file": "plates/hunter350_coupon_rect_lite_PLATE_6up.stl",
@@ -871,10 +871,10 @@
       "coil_rho_min": null,
       "core_bend_strain_pct": null,
       "min_gap_turns_mm": null,
-      "min_gap_between_straps_mm": 5.05,
+      "min_gap_between_straps_mm": 4.98,
       "extent_mm": [
-        249.0,
-        70.3
+        274.0,
+        70.4
       ],
       "height_mm": 25.5,
       "rotations_deg": [
@@ -887,18 +887,18 @@
       ],
       "mass_g_onyx": 128.0,
       "mesh": {
-        "triangles": 60648,
+        "triangles": 63420,
         "directed_edge_dupes": 0,
         "unmatched_edges": 0,
         "closed": true
       }
     },
     "mesh_print": {
-      "triangles": 10108,
-      "volume_cm3": 17.73,
+      "triangles": 10570,
+      "volume_cm3": 17.77,
       "footprint_mm": [
         230.0,
-        20.3
+        20.4
       ],
       "height_mm": 25.5,
       "coiled": false,
