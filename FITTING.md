@@ -55,6 +55,7 @@ If your tyre or loop is different, open `cad/snow_strap_fc.py` in FreeCAD, add y
 - Use plain Onyx with solid fill, so the 2.4 mm core and the teeth are all walls and solid layers. Start at 0.1 mm layers.
 - Keep the Onyx dry before and after printing. It is a nylon and softens when damp.
 - Rating: scaling the 300 N PA12 rating by Onyx's lower tensile strength (about 35–40 MPa against 45 MPa) gives roughly 250 N per strap. That is a scaled estimate, not an FEM run or a load test. With 5–6 straps per wheel, two straps share the pull and every model stays at or below about 66 % of that.
+- For less Onyx, print the `_LITE` plates (`out/lite/plates/`, or `out/lite_rect/plates/` with square lugs): about 8 % lighter, same lock. See the [README](README.md).
 - Regenerate or change the layout with `cad/snow_strap_fc.py` (see `PLATE_BED` and `PLATE_RHO0`) and `cad/plate_layout.py`.
 
 **Settings.** These are a starting point for a 0.4 mm nozzle:
