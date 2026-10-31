@@ -20,7 +20,7 @@ A finite-element check of the pawl and head set the final tooth shape.
   - The teeth are at 2.5 mm pitch with 0.4 mm root fillets. At 2.0 mm pitch the 0.25 mm fillets ran about 30 % higher stress.
   - The head has a 3.6 mm floor, a wider frame beside the slot and a gusset into the pillar. With a 2.4 mm floor, the frame would have yielded at about 120 N.
 - **Print plates for a 330 × 270 × 200 mm bed** (Markforged X7, Onyx). Five straps of any tyre size fit on one plate, or six test pieces. See [Print several at once](#print-several-at-once-330--270--200-mm-bed-onyx).
-- **Stepped lugs, 10.5 mm above the tyre** (9 mm on the front, for mudguard clearance). Base fillets are 2 mm, with shallow dishes between the lugs and raised grip dots (3 mm domes, 0.55 mm tall, staggered 8 mm grid, 5 mm clear between dots, sized to the tyre's groove spacing) on the tyre side.
+- **Stepped lugs, 10.5 mm above the tyre** (9 mm on the front, for mudguard clearance). Base fillets are 2 mm, with shallow dishes between the lugs and raised grip dots (4 mm domes, 0.74 mm tall, staggered 9.2 mm grid, 5.2 mm clear between dots, sized to the tyre's groove spacing; fewer and bigger than the earlier 3 mm / 8 mm dots, with more contact area, about the same edge length and a deeper bite) on the tyre side.
 - **Rectangular-lug variant (`_RECT`).** The same strap with square-cornered lugs, a small rectangle on a big one, as in the reference strap (no oval dishes between the lugs): `out/rect/hunter350_<preset>_rect_*`. Build it with a `_RECT` preset name, e.g. `METRO_REAR_RECT`.
 - **Gradual ramps throughout**, a rounded 35 mm tip, and a thick root gusset where the strap leaves the head.
 
@@ -47,7 +47,7 @@ Every preset also has a `_RECT` version (for example `METRO_REAR_RECT`): the sam
 |---|---|---|---|
 | `METRO_FRONT` | 38 g | 36 g | 180 g |
 | `METRO_REAR` | 44 g | 41 g | 207 g |
-| `RETRO_FRONT` | 37 g | 34 g | 171 g |
+| `RETRO_FRONT` | 37 g | 34 g | 172 g |
 | `RETRO_REAR` | 41 g | 38 g | 193 g |
 | `COUPON` | 22 g | 21 g | 127 g (6) |
 
@@ -100,11 +100,11 @@ The bed is the build volume of a Markforged X7 ([330 × 270 × 200 mm](https://m
 
 | Plate file | Straps | Footprint | Tightest turn | Core bend strain | Onyx on the plate |
 |---|---|---|---|---|---|
-| `METRO_FRONT_PLATE_5up` | 5 | 287 × 250 mm | 44.0 mm | 2.73 % | 193 g |
+| `METRO_FRONT_PLATE_5up` | 5 | 287 × 250 mm | 44.0 mm | 2.73 % | 194 g |
 | `METRO_REAR_PLATE_5up` | 5 | 307 × 251 mm | 43.4 mm | 2.76 % | 225 g |
-| `RETRO_FRONT_PLATE_5up` | 5 | 300 × 249 mm | 47.1 mm | 2.55 % | 184 g |
+| `RETRO_FRONT_PLATE_5up` | 5 | 300 × 249 mm | 47.1 mm | 2.55 % | 185 g |
 | `RETRO_REAR_PLATE_5up` | 5 | 299 × 250 mm | 44.7 mm | 2.68 % | 209 g |
-| `COUPON_PLATE_6up` | 6 | 249 × 70 mm | none (straight) | none | 130 g |
+| `COUPON_PLATE_6up` | 6 | 249 × 70 mm | none (straight) | none | 131 g |
 
 ![Five Metro rear straps on one plate](docs/images/plate_metro_rear.png)
 
