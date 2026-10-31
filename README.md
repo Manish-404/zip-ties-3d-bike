@@ -38,6 +38,21 @@ A finite-element check of the pawl and head set the final tooth shape.
 
 Every preset also has a `_RECT` version (for example `METRO_REAR_RECT`): the same strap with square-cornered lugs and no oval dishes, built into `out/rect/`.
 
+**Lighter version (`_LITE`, for Onyx).** About 8 % less material with the lock unchanged: `out/lite/` (round lugs) and `out/lite_rect/` (square lugs), each with its own plates. Add the suffix to any preset (`METRO_REAR_LITE`, `METRO_REAR_RECT_LITE`).
+- **What changed:** a 3.4 × 3 mm tunnel runs through each lower lug tier (1.3 mm walls, printed as a vertical hole, no supports), and the strap is 10 mm wide instead of 15 mm in the neck and between the flange and the teeth. Those parts never enter the head.
+- **What did not change:** the head, pawl, root, teeth (all 15 mm wide), tip, strap length, lug height, dots and coil layout. Section volumes of the head, teeth and tip match the standard strap, so the lock rating is the same.
+- **Margin in the narrow parts:** the 10 mm strap has 24–26 mm² of section. At 250 N that is about 10 MPa, against 35–40 MPa for Onyx, but a steady load creeps a narrower strap faster, so re-tighten as usual. The lug tunnels have not been load-tested.
+
+| Preset | Onyx per strap, standard | Onyx per strap, `_LITE` | Onyx per plate of 5, `_LITE` |
+|---|---|---|---|
+| `METRO_FRONT` | 38 g | 36 g | 180 g |
+| `METRO_REAR` | 44 g | 41 g | 207 g |
+| `RETRO_FRONT` | 37 g | 34 g | 171 g |
+| `RETRO_REAR` | 41 g | 38 g | 193 g |
+| `COUPON` | 22 g | 21 g | 127 g (6) |
+
+A deeper cut would need windows in the tread band or a thinner core. Both change the tread's grip or the lock's margin, so they are not in `_LITE`.
+
 ![Where the strap goes around each tyre and rim](docs/images/fit_diagram.png)
 
 ## Files
