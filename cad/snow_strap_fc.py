@@ -97,6 +97,12 @@ BASE = dict(
     lug_style="STEPPED",    # "RECT" = same two tiers with square corners, as in the reference strap (preset suffix _RECT)
     r_rect_base=1.0,        # RECT: small root fillet (strength)
     r_rect_top=0.3,         # RECT: top and step edges stay almost sharp
+    lite=False,             # preset suffix _LITE: about 8 % lighter, same lock (teeth, pawl, head, root untouched)
+    lite_w=10.0,            # LITE: strap width where it never enters the head (neck, and before the teeth)
+    lite_taper=20.0,        # LITE: length of each width change
+    lite_wall=1.3,          # LITE: wall of the lug tunnel along the strap
+    lite_floor=1.0,         # LITE: lug tunnel starts this far above the band
+    lite_roof=1.0,          # LITE: and stops this far below the lower tier's top
     dish_every=1,           # 1 = a dish in every gap, 2 = alternating gaps
     dish_len=8.0,
     dish_w=16.0,
@@ -180,10 +186,14 @@ def section(tyre):
 
 def params(preset="METRO_REAR", **over):
     P = dict(BASE)
-    if preset.endswith("_RECT"):
-        preset = preset[:-5]
-        P["lug_style"] = "RECT"
-        P["dish_depth"] = 0.0    # the oval dish cutter would scoop the flanks of the square lugs
+    while preset.endswith(("_RECT", "_LITE")):      # suffixes in any order
+        if preset.endswith("_RECT"):
+            preset = preset[:-5]
+            P["lug_style"] = "RECT"
+            P["dish_depth"] = 0.0    # the oval dish cutter would scoop the flanks of the square lugs
+        else:
+            preset = preset[:-5]
+            P["lite"] = True
     if preset == "COUPON":
         P.update(COUPON)
     else:
@@ -474,6 +484,17 @@ def plan_profile(P, L):
     yW, yB, yT = yb + P["W"], yb + P["W_band"], yb + P["tip_W"]
     b0, Ls = P["band_start"], L["L_s"]
     r_tip = P["tip_W"] / 2.0
+    if P["lite"]:
+        # Narrow where the strap never enters the head: the neck, and between the flange and the
+        # teeth. The tension stress there stays near 10 MPa at 250 N (teeth, slot and tip are untouched).
+        # A zone too short for its two tapers (the coupon) stays full width.
+        yL, tp = yb + P["lite_w"], P["lite_taper"]
+        t0, fe, ie = L["tooth0"], L["flange_end"], b0 - P["inramp_len"]
+        pre = [(t0, yW, 8.0), (t0 - tp, yL, 12.0), (fe + tp, yL, 12.0), (fe, yW, 8.0)]             if t0 - fe > 2 * tp + 10.0 else [(fe, yW, 10.0)]
+        neck = [(ie, yW, 10.0), (ie - tp, yL, 12.0), (16.0 + tp, yL, 12.0), (16.0, yW, 10.0)]             if ie - 16.0 > 2 * tp + 10.0 else [(ie, yW, 10.0), (16.0, yW, 10.0)]
+        return ([(-1.0, yb, 0), (Ls, yb, r_tip), (Ls, yT, r_tip), (L["tip_start"], yW, 20.0)] + pre
+                + [(L["band_end"], yB, 10.0), (b0, yB, 10.0)] + neck
+                + [(0.6, yb + L["head_W"], 3.0), (-1.0, yb + L["head_W"], 0)])
     return [(-1.0, yb, 0), (Ls, yb, r_tip), (Ls, yT, r_tip), (L["tip_start"], yW, 20.0),
             (L["flange_end"], yW, 10.0), (L["band_end"], yB, 10.0), (b0, yB, 10.0),
             (b0 - P["inramp_len"], yW, 10.0), (16.0, yW, 10.0), (0.6, yb + L["head_W"], 3.0),
@@ -539,6 +560,14 @@ def build_body(P, L, max_seg=None):
             sc = P["band_start"] + P["lug_pitch"] * (g + 1)
             tools.append(ellipsoid(P["dish_len"] / 2 / k, P["dish_w"] / 2 / k, C,
                                    App.Vector(sc, yc, P["T_band"] + C - d)))
+    if P["lite"]:        # a tunnel through each lug, across the whole band (prints as a vertical hole)
+        T, w = P["T_band"], P["lug_len1"] - 2 * P["lite_wall"]
+        z0, z1 = T + P["lite_floor"], T + P["lug_h1"] - P["lite_roof"]
+        if w > 0.8 and z1 - z0 > 0.8:
+            for i in range(P["n_lugs"]):
+                c = P["band_start"] + P["lug_pitch"] * (i + 0.5)
+                tools.append(prism_xz([(c - w / 2, z0), (c - w / 2, z1), (c + w / 2, z1), (c + w / 2, z0)],
+                                      [0.4, 0.4, 0.4, 0.4], P["y_bed"] - 1.0, P["y_bed"] + P["W_band"] + 1.0))
     if P["rib_n"] > 0 and P["rib_depth"] > 0:
         hw, dep, ext = P["rib_w"] / 2.0, P["rib_depth"], 0.5
         hb = hw * (dep + ext) / dep
@@ -879,6 +908,8 @@ def export_preset(preset, outdir, log=print):
     tag = "hunter350_%s" % P["preset"].lower()
     if P["lug_style"] == "RECT":
         tag += "_rect"
+    if P["lite"]:
+        tag += "_lite"
     chk = dict(valid=bool(shape.isValid()), solids=len(shape.Solids), shells=len(shape.Shells),
                faces=len(shape.Faces))
     step = os.path.join(outdir, tag + ".step")
@@ -909,7 +940,7 @@ def export_preset(preset, outdir, log=print):
     vol = shape.Volume
     bb = shape.optimalBoundingBox()
     info = dict(
-        preset=preset, lug_style=P["lug_style"],
+        preset=preset, lug_style=P["lug_style"], lite=P["lite"],
         files=dict(step=os.path.basename(step), stl_straight=os.path.basename(stl),
                    stl_print=os.path.basename(pstl)),
         brep=chk,
